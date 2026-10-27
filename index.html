@@ -14,31 +14,39 @@
     <script src="./profile.js" defer></script>
     <script src="./projects.js" defer></script>
     <script src="./publications.js" defer></script>
+    <script src="./background.js" defer></script>
     <script src="./assets/site.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#projects">프로젝트 목록으로 이동</a>
     <div class="site-shell">
-      <header class="site-header">
-        <a class="brand" href="./" aria-label="seungju Lee 홈">
+      <header class="profile-header" id="top">
+        <div class="header-anchor">
+          <div class="header-bar" id="header-bar">
+            <div class="site-header">
+        <a class="brand" href="#top" aria-label="seungju Lee 홈">
           <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
           <span><span data-profile-name>seungju Lee</span><span class="brand-period">.</span></span>
         </a>
+        <p class="header-motto" data-profile-motto aria-hidden="true">Projects, papers &amp; experiments.</p>
         <nav aria-label="주 메뉴">
+          <a class="nav-link nav-about" href="#about">About</a>
           <a class="nav-link" href="#projects">Projects</a>
           <a class="nav-link" href="#publications">Papers</a>
           <a class="github-link" href="https://github.com/sincerelsj" target="_blank" rel="noopener noreferrer" aria-label="GitHub (새 탭)"><span class="github-text">GitHub</span> <span aria-hidden="true">↗</span></a>
         </nav>
-      </header>
-
-      <main>
+            </div>
+          </div>
+        </div>
         <section class="hero personal-hero" aria-labelledby="page-title">
           <p class="eyebrow"><span class="tiny-line" aria-hidden="true"></span> A PERSONAL RESEARCH ARCHIVE</p>
           <div class="profile-layout">
             <div class="profile-intro">
               <h1 id="page-title"><span id="given-name">seungju</span> <em id="family-name">Lee</em><span class="name-period" aria-hidden="true">.</span></h1>
-              <p class="profile-tagline">Projects, papers <span>&amp; experiments.</span></p>
+              <p class="profile-affiliation" id="profile-affiliation">한국외국어대학교 AI융합학과 · IMS 연구실</p>
+              <p class="profile-tagline" data-profile-motto>Projects, papers &amp; experiments.</p>
               <p class="hero-description" id="profile-bio">직접 만든 프로젝트와 실험, 그리고 논문을 기록합니다.<br>관심 있는 작업을 골라, 자세히 살펴보세요.</p>
+              <ul class="research-interests" id="research-interests" aria-label="관심 연구 분야"></ul>
             </div>
             <figure class="profile-portrait" aria-label="프로필 사진 자리">
               <div class="portrait-frame" id="portrait-frame">
@@ -55,7 +63,9 @@
             <a class="explore-link" href="#projects">프로젝트 둘러보기 <span aria-hidden="true">↓</span></a>
           </div>
         </section>
+      </header>
 
+      <main>
         <section class="projects-section" id="projects" aria-labelledby="projects-heading">
           <div class="section-heading">
             <div class="section-title"><h2 id="projects-heading">Projects</h2><span class="count" id="project-count" aria-label="공개 프로젝트 수">01</span></div>
@@ -70,9 +80,21 @@
             <div class="section-title"><h2 id="publications-heading">Publications</h2><span class="count" id="publication-count" aria-label="공개 논문 수">00</span></div>
             <span class="collection-note">Papers &amp; conference presentations.</span>
           </div>
-          <p class="section-description">논문과 학회 발표를 모아두는 공간입니다.</p>
+          <p class="section-description">게재 논문, 투고 원고와 학회 발표.</p>
           <div class="publication-list" id="publication-list" aria-label="논문 목록"></div>
           <noscript><p>논문 목록을 보려면 JavaScript를 켜주세요.</p></noscript>
+        </section>
+
+        <section class="background-section" id="about" aria-labelledby="background-heading">
+          <div class="section-heading">
+            <div class="section-title"><h2 id="background-heading">Background</h2></div>
+            <span class="collection-note">Education, experience &amp; recognition.</span>
+          </div>
+          <div class="background-grid">
+            <section aria-labelledby="education-heading"><h3 class="background-label" id="education-heading">EDUCATION</h3><div id="education-list"></div></section>
+            <section aria-labelledby="experience-heading"><h3 class="background-label" id="experience-heading">RESEARCH EXPERIENCE</h3><div id="experience-list"></div></section>
+            <section aria-labelledby="awards-heading"><h3 class="background-label" id="awards-heading">HONORS &amp; AWARDS</h3><div id="awards-list"></div></section>
+          </div>
           <div class="collection-end"><span class="end-mark" aria-hidden="true">✳</span><p>More ideas are taking shape.<span>다음 작업도 이곳에서 만나요.</span></p></div>
         </section>
       </main>

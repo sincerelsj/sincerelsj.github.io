@@ -112,3 +112,74 @@
   .personal-hero .eyebrow{font-size:7px;letter-spacing:1.3px}
   .portrait-placeholder>span{font-size:4px}
 }
+
+/* Expanded profile and compact persistent header */
+:root{--header-expanded-size:108px;--header-compact-size:66px;--header-gutter:112px}
+html{scroll-padding-top:calc(var(--header-current-size,var(--header-expanded-size)) + 24px)}
+.header-anchor{height:var(--header-expanded-size)}
+.header-bar{position:fixed;inset:0 0 auto;z-index:100;background:rgba(247,247,242,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #dce0d7;transition:box-shadow .18s ease}
+.header-bar.is-scrolled{box-shadow:0 4px 22px #28302108}
+.header-bar .site-header{height:var(--header-current-size,var(--header-expanded-size));width:min(1280px,calc(100% - var(--header-gutter)));margin:auto;border:0;gap:24px;position:relative}
+.header-bar .brand{flex-shrink:0}
+.header-bar nav{margin-left:auto;flex-shrink:0;gap:25px}
+.header-motto{min-width:0;margin:0 0 0 5px;flex:1;color:#6a7b5d;font-family:Georgia,"Times New Roman",serif;font-size:15px;font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:var(--motto-opacity,0);transform:translateY(calc(5px * (1 - var(--motto-opacity,0))))}
+.skip-link{z-index:200}
+.profile-affiliation{font-size:11px;line-height:1.6;color:#859075;letter-spacing:-.1px;margin:15px 0 0}
+.profile-tagline{margin-top:12px}
+.research-interests{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:20px 0 0;padding:0}
+.research-interests li{font-size:9px;letter-spacing:.1px;border:1px solid #d9e1cf;border-radius:20px;padding:5px 9px;color:#6c7e59}
+.project-organization{font-size:9px;line-height:1.7;color:#89917f;letter-spacing:-.15px;margin:-9px 0 17px;word-break:keep-all}
+.is-published .card-arrow{border:0;color:#aab0a5;font-size:16px}
+.publication-authors strong{font-weight:650;color:#536543}
+.publication-title{word-break:keep-all}
+.publication-note{font-size:10px;line-height:1.8;color:#8b9581;margin:6px 0 0}
+.publication-status.status-published{color:#51713f;background:#e7eddf}
+.publication-status.status-accepted{color:#856d3d;background:#f1ebdd}
+.publication-status.status-submitted{color:#6f6683;background:#ece8f1}
+.publication-links{max-width:160px}
+.background-section{border-top:1px solid var(--line);margin-top:52px;padding-top:28px}
+.background-grid{display:grid;grid-template-columns:1.1fr 1.1fr 1fr;gap:38px;margin-top:31px}
+.background-label{font-size:9px;letter-spacing:1.5px;font-weight:600;color:#6f815f;margin:0 0 24px}
+.background-item{margin-bottom:27px}
+.background-period{font-size:10px;font-variant-numeric:tabular-nums;color:#909a84;margin:0 0 10px}
+.background-title{font-size:14px;font-weight:600;line-height:1.6;letter-spacing:-.3px;margin:0 0 5px}
+.background-detail{font-size:11px;color:var(--muted);line-height:1.8;margin:0}
+.background-note{font-size:10px;color:#8a957f;line-height:1.8;margin:3px 0 0}
+@media(max-width:1050px){
+  :root{--header-gutter:72px}
+  .header-bar .site-header{gap:18px}
+  .header-bar nav{gap:18px}
+  .header-motto{font-size:13px}
+  .background-grid{gap:25px}
+}
+@media(max-width:700px){
+  :root{--header-expanded-size:82px;--header-compact-size:60px;--header-gutter:40px}
+  .header-bar .site-header{gap:12px}
+  .header-bar nav{gap:17px}
+  .header-bar .nav-about{display:none}
+  .header-motto{position:absolute;left:145px;right:0;font-size:11px;margin:0;pointer-events:none}
+  .header-bar:not(.is-condensed) .header-motto{visibility:hidden}
+  .header-bar.is-condensed nav{visibility:hidden;pointer-events:none}
+  .profile-affiliation{font-size:9px;margin-top:11px;word-break:keep-all}
+  .profile-tagline{margin-top:11px}
+  .research-interests{gap:5px;margin-top:15px}
+  .research-interests li{font-size:7px;padding:4px 7px}
+  .project-organization{font-size:10px}
+  .publication-meta{flex-wrap:wrap}
+  .publication-note{font-size:9px}
+  .background-section{margin-top:35px;padding-top:24px}
+  .background-grid{grid-template-columns:1fr;gap:10px;margin-top:26px}
+  .background-grid>section+section{border-top:1px solid var(--line);padding-top:25px}
+  .background-label{margin-bottom:20px}
+  .background-title{font-size:15px}
+  .background-detail{font-size:12px}
+}
+@media(max-width:480px){
+  .header-bar nav{gap:14px}
+  .header-motto{left:128px;font-size:10px}
+}
+@media(max-width:350px){
+  .header-bar nav{gap:10px}
+  .header-motto{left:117px;font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){.header-motto{transform:none}}

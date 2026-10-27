@@ -4,7 +4,11 @@
 window.PROFILE = {
   givenName: "seungju",
   familyName: "Lee",
-  bio: "직접 만든 프로젝트와 실험, 그리고 논문을 기록합니다.\n관심 있는 작업을 골라, 자세히 살펴보세요.",
+  affiliation: "한국외국어대학교 AI융합학과 · IMS 연구실",
+  bio: "AI 에이전트와 인간의 상호작용, XR 사용자 경험,\n멀티모달 데이터 분석을 중심으로 연구합니다.",
+  // 스크롤 후 상단 이름 바에도 표시되는 문구입니다.
+  motto: "Projects, papers & experiments.",
+  interests: ["Human–Agent Interaction", "XR & UX", "Multimodal Analysis"],
   photo: "",
   photoAlt: "seungju Lee의 프로필 사진",
   updated: "2026-10-27"

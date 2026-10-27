@@ -46,6 +46,15 @@
     document.querySelector('meta[name="description"]').content = `${fullName}의 프로젝트와 실험, 논문을 모아두는 개인 아카이브입니다.`;
   }
   if (profile.bio) document.getElementById("profile-bio").textContent = profile.bio;
+  if (profile.affiliation) document.getElementById("profile-affiliation").textContent = profile.affiliation;
+  const motto = profile.motto || "Projects, papers & experiments.";
+  document.querySelectorAll("[data-profile-motto]").forEach(element => {
+    element.textContent = motto;
+    element.title = motto;
+  });
+  for (const interest of profile.interests || []) {
+    document.getElementById("research-interests").append(node("li", "", interest));
+  }
   const updated = calendarDate(profile.updated);
   if (updated) {
     const time = document.getElementById("profile-updated");
@@ -66,10 +75,11 @@
 
   for (const [index, project] of projects.entries()) {
     const url = destination(project.href);
-    const available = !project.placeholder && Boolean(url);
-    const article = node("article", `project-card${available ? " is-available" : " is-upcoming"}`);
-    const surface = node(available ? "a" : "div", "card-surface");
-    if (available) {
+    const available = !project.placeholder;
+    const clickable = available && Boolean(url);
+    const article = node("article", `project-card${clickable ? " is-available" : available ? " is-published" : " is-upcoming"}`);
+    const surface = node(clickable ? "a" : "div", "card-surface");
+    if (clickable) {
       surface.href = url;
       surface.target = "_blank";
       surface.rel = "noopener noreferrer";
@@ -98,7 +108,7 @@
 
     const number = String(index + 1).padStart(2, "0");
     thumbnail.append(node("span", "thumbnail-number", number));
-    if (available) {
+    if (clickable) {
       const indicator = node("span", "thumbnail-indicator");
       indicator.append(node("i", "status-dot"), document.createTextNode("INTERACTIVE"));
       thumbnail.append(indicator);
@@ -113,15 +123,22 @@
       const time = node("time", "", date.text);
       time.dateTime = date.raw;
       dateLabel.append(document.createTextNode(`${project.dateLabel || "등록"} `), time);
+      const end = calendarDate(project.dateEnd);
+      if (end) {
+        const endTime = node("time", "", end.text);
+        endTime.dateTime = end.raw;
+        dateLabel.append(document.createTextNode(" – "), endTime);
+      }
     } else {
       dateLabel.textContent = "날짜 미정";
     }
     meta.append(dateLabel);
     body.append(meta, node("h3", "card-title", project.title), node("p", "card-subtitle", project.subtitle), node("p", "card-description", project.description));
+    if (project.organization) body.append(node("p", "project-organization", `과제 기관 · ${project.organization}`));
 
     const footer = node("div", "card-footer");
-    footer.append(node("span", "card-action", available ? (project.linkLabel || "프로젝트 보기") : "준비 중"));
-    const arrow = node("span", "card-arrow", available ? "↗" : "—");
+    footer.append(node("span", "card-action", clickable ? (project.linkLabel || "프로젝트 보기") : available ? (project.status || "연구 참여") : "준비 중"));
+    const arrow = node("span", "card-arrow", clickable ? "↗" : "—");
     arrow.setAttribute("aria-hidden", "true");
     footer.append(arrow);
     body.append(footer);
@@ -130,7 +147,7 @@
     grid.append(article);
   }
 
-  const count = projects.filter(project => !project.placeholder && destination(project.href)).length;
+  const count = projects.filter(project => !project.placeholder).length;
   document.getElementById("project-count").textContent = String(count).padStart(2, "0");
 
   const publications = window.PUBLICATIONS || [];
@@ -146,13 +163,18 @@
       dateBlock.append(time);
       if (date.raw.length > 4) dateBlock.append(node("span", "", date.text.slice(5)));
     } else {
-      dateBlock.append(node("span", "publication-year", "—"), node("span", "", "날짜 미정"));
+      dateBlock.append(node("span", "publication-year", "—"));
+      if (!available) dateBlock.append(node("span", "", "날짜 미정"));
     }
 
     const content = node("div", "publication-content");
     const meta = node("div", "publication-meta");
     meta.append(node("span", "publication-type", paper.type || "PUBLICATION"));
     if (!available) meta.append(node("span", "publication-status", "준비 중"));
+    else if (paper.status) {
+      const tone = ["published", "accepted", "submitted"].includes(paper.statusTone) ? paper.statusTone : "published";
+      meta.append(node("span", `publication-status status-${tone}`, paper.status));
+    }
     const title = node("h3", "publication-title");
     const mainUrl = available ? destination(paper.href) : null;
     if (mainUrl) {
@@ -165,11 +187,20 @@
     } else {
       title.textContent = paper.title;
     }
-    content.append(meta, title, node("p", "publication-authors", paper.authors), node("p", "publication-venue", paper.venue));
+    content.append(meta, title);
+    if (paper.authors) {
+      const authors = node("p", "publication-authors");
+      for (const part of paper.authors.split(/(Seungju Lee|이승주)/gi)) {
+        authors.append(/^(Seungju Lee|이승주)$/i.test(part) ? node("strong", "", part) : document.createTextNode(part));
+      }
+      content.append(authors);
+    }
+    content.append(node("p", "publication-venue", paper.venue));
+    if (paper.note) content.append(node("p", "publication-note", paper.note));
 
     const links = node("div", "publication-links");
     if (available) {
-      for (const [field, label] of [["href", "논문"], ["pdf", "PDF"], ["code", "Code"], ["slides", "Slides"]]) {
+      for (const [field, label] of [["href", paper.linkLabel || "논문"], ["pdf", "PDF"], ["code", "Code"], ["slides", "Slides"]]) {
         const url = destination(paper[field]);
         if (!url) continue;
         const link = node("a", "publication-link", `${label} ↗`);
@@ -184,5 +215,63 @@
     publicationList.append(row);
   }
   document.getElementById("publication-count").textContent = String(publications.filter(paper => !paper.placeholder).length).padStart(2, "0");
+  document.getElementById("publication-count").setAttribute("aria-label", "논문·발표 항목 수");
+
+  const background = window.BACKGROUND || {};
+  for (const [field, target] of [["education", "education-list"], ["experience", "experience-list"], ["awards", "awards-list"]]) {
+    for (const entry of background[field] || []) {
+      const item = node("article", "background-item");
+      item.append(node("p", "background-period", entry.period), node("h4", "background-title", entry.title), node("p", "background-detail", entry.detail));
+      if (entry.note) item.append(node("p", "background-note", entry.note));
+      document.getElementById(target).append(item);
+    }
+  }
+
+  // Keep the expanded profile in normal flow; only the bar changes height.
+  // This avoids moving the page underneath the reader while scrolling.
+  const root = document.documentElement;
+  const bar = document.getElementById("header-bar");
+  const title = document.getElementById("page-title");
+  const compactMotto = bar.querySelector(".header-motto");
+  let expandedHeight = 108;
+  let compactHeight = 66;
+  let collapseStart = 80;
+  let collapseEnd = 280;
+  let framePending = false;
+  let needsMeasure = true;
+
+  function updateHeader() {
+    framePending = false;
+    if (needsMeasure) {
+      const styles = getComputedStyle(root);
+      expandedHeight = parseFloat(styles.getPropertyValue("--header-expanded-size")) || 108;
+      compactHeight = parseFloat(styles.getPropertyValue("--header-compact-size")) || 66;
+      const bounds = title.getBoundingClientRect();
+      collapseStart = Math.max(24, bounds.top + window.scrollY - expandedHeight - 30);
+      collapseEnd = Math.max(collapseStart + 100, bounds.bottom + window.scrollY - compactHeight);
+      needsMeasure = false;
+    }
+    const progress = Math.max(0, Math.min(1, (window.scrollY - collapseStart) / (collapseEnd - collapseStart)));
+    const height = expandedHeight + (compactHeight - expandedHeight) * progress;
+    const mottoOpacity = Math.max(0, Math.min(1, (progress - 0.4) / 0.6));
+    root.style.setProperty("--header-current-size", `${height.toFixed(2)}px`);
+    bar.style.setProperty("--motto-opacity", mottoOpacity.toFixed(3));
+    bar.classList.toggle("is-condensed", progress >= 0.8);
+    bar.classList.toggle("is-scrolled", window.scrollY > 8);
+    compactMotto.setAttribute("aria-hidden", String(progress < 0.8));
+  }
+
+  function scheduleHeader(measure = false) {
+    needsMeasure ||= measure;
+    if (framePending) return;
+    framePending = true;
+    requestAnimationFrame(updateHeader);
+  }
+
+  window.addEventListener("scroll", () => scheduleHeader(), { passive: true });
+  window.addEventListener("resize", () => scheduleHeader(true));
+  window.addEventListener("pageshow", () => scheduleHeader(true));
+  window.addEventListener("load", () => scheduleHeader(true), { once: true });
+  updateHeader();
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
