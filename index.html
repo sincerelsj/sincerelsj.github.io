@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f2">
+    <meta name="description" content="직접 만든 프로젝트와 연구 실험을 모아두는 공간입니다.">
+    <meta property="og:title" content="Project Archive">
+    <meta property="og:description" content="Projects, ideas & experiments. 프로젝트와 실험을 만나보세요.">
+    <meta property="og:type" content="website">
+    <title>Project Archive — Projects, ideas & experiments</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="./projects.js" defer></script>
+    <script src="./assets/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#projects">프로젝트 목록으로 이동</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="./" aria-label="Project Archive 홈">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>Project Archive<span class="brand-period">.</span></span>
+        </a>
+        <nav aria-label="주 메뉴">
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="github-link" href="https://github.com/sincerelsj" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (새 탭)</span></a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="page-title">
+          <p class="eyebrow"><span class="tiny-line" aria-hidden="true"></span> A PERSONAL COLLECTION</p>
+          <h1 id="page-title">Projects, ideas<br>&amp; <em>experiments.</em></h1>
+          <div class="hero-bottom">
+            <p class="hero-description">직접 만든 프로젝트와 실험을 모아두는 공간.<br>궁금한 프로젝트를 골라, 직접 경험해 보세요.</p>
+            <a class="explore-link" href="#projects">프로젝트 둘러보기 <span aria-hidden="true">↓</span></a>
+          </div>
+          <span class="hero-orbit" aria-hidden="true"><span></span><i></i></span>
+        </section>
+
+        <section class="projects-section" id="projects" aria-labelledby="projects-heading">
+          <div class="section-heading">
+            <div class="section-title"><h2 id="projects-heading">The collection</h2><span class="count" id="project-count" aria-label="공개 프로젝트 수">01</span></div>
+            <span class="collection-note">A little more, over time.</span>
+          </div>
+          <div class="project-grid" id="project-grid" aria-label="프로젝트 목록"></div>
+          <noscript><p>프로젝트 목록을 보려면 JavaScript를 켜주세요. <a href="http://203.253.84.41:38002/">의사결정 과정 실험에 바로 참여하기</a></p></noscript>
+          <div class="collection-end"><span class="end-mark" aria-hidden="true">✳</span><p>More ideas are taking shape.<span>다음 프로젝트도 이곳에서 만나요.</span></p></div>
+        </section>
+      </main>
+
+      <footer class="site-footer"><span>Project Archive.</span><span>Always a work in progress.</span><span>© <span id="year">2026</span></span></footer>
+    </div>
+  </body>
+</html>
