@@ -110,7 +110,8 @@
     thumbnail.append(node("span", "thumbnail-number", number));
     if (clickable) {
       const indicator = node("span", "thumbnail-indicator");
-      indicator.append(node("i", "status-dot"), document.createTextNode("INTERACTIVE"));
+      const destinationLabel = new URL(url).hostname === "github.com" ? "GITHUB" : "INTERACTIVE";
+      indicator.append(node("i", "status-dot"), document.createTextNode(destinationLabel));
       thumbnail.append(indicator);
     }
 
