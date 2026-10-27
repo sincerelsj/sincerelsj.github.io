@@ -1,8 +1,14 @@
-# Project Archive
+# seungju Lee — Projects & Publications
 
-썸네일 중심의 프로젝트 목록 페이지입니다. 별도 설치나 빌드 없이 GitHub Pages에서 실행됩니다.
+프로필, 썸네일 중심의 프로젝트 목록, 논문 목록을 갖춘 개인 페이지입니다. 별도 설치나 빌드 없이 GitHub Pages에서 실행됩니다.
 
 공개 주소: https://sincerelsj.github.io/
+
+## 프로필과 사진
+
+`profile.js`에서 이름, 소개, 마지막 수정일을 바꿉니다. 프로필 사진을 `assets/images/`에 넣고 `photo`에 `assets/images/profile.webp` 같은 경로를 입력하면 준비 중인 사진 자리에 실제 사진이 표시됩니다. 권장 사진 비율은 4:5이며 JPG, PNG, WebP를 사용할 수 있습니다. 경로가 비어 있거나 이미지 로딩이 실패하면 사진 자리 표시를 유지합니다.
+
+`updated`는 페이지를 실제로 수정한 날짜를 `YYYY-MM-DD`로 입력합니다. 방문할 때마다 날짜가 바뀌지는 않습니다.
 
 ## 프로젝트 추가
 
@@ -17,6 +23,8 @@
   subtitle: "English project name",
   description: "프로젝트를 소개하는 짧은 설명입니다.",
   category: "RESEARCH",
+  date: "2026-10-27",
+  dateLabel: "등록",
   thumbnail: "assets/images/my-project.webp",
   thumbnailAlt: "썸네일 이미지의 내용을 설명하는 문장",
   href: "https://example.com/",
@@ -28,11 +36,37 @@
 
 `tone`은 이미지가 없거나 로딩되지 않았을 때의 배경색입니다. `sage`, `sand`, `blue`, `rose`, `lilac` 중 하나를 지정합니다. 배열에 프로젝트 항목을 추가하거나 제거하면 카드 수가 자동으로 바뀝니다.
 
+`date`는 카드에 표시할 날짜이며 `dateLabel`로 등록, 완료 등의 의미를 지정합니다. 현재 실험 카드의 날짜는 실험 수행일이 아니라 아카이브 등록일입니다. 아직 날짜를 모르면 빈 문자열로 두세요.
+
 현재 실험 버튼은 `http://203.253.84.41:38002/`를 새 탭으로 엽니다. 주소가 바뀌면 `projects.js`의 첫 번째 `href`와 `index.html`의 `noscript` 링크를 바꾸세요.
+
+## 논문 추가
+
+`publications.js`의 준비 중인 항목을 수정합니다. 실제 논문을 등록하면 `placeholder`를 `false`로 바꾸세요. 아직 실제 논문 정보는 등록하지 않았습니다.
+
+```js
+{
+  id: "paper-id",
+  title: "실제 논문 제목",
+  authors: "저자명",
+  venue: "실제 학회 또는 저널명",
+  type: "CONFERENCE",
+  date: "2026-10-27",
+  href: "https://doi.org/실제-DOI",
+  pdf: "assets/papers/paper.pdf",
+  code: "",
+  slides: "",
+  placeholder: false
+}
+```
+
+논문 원문, PDF, 코드, 발표 자료 링크는 입력한 항목만 표시됩니다. PDF를 이 저장소에 올리는 경우 실제 파일도 해당 경로에 추가하세요. 링크가 없어도 논문의 서지 정보를 표시할 수 있습니다.
+
+프로젝트와 논문 날짜는 `2026`, `2026-10`, `2026-10-27` 형식을 지원합니다. 알고 있는 날짜의 정확도에 맞게 입력하면 연도, 연월, 연월일로 표시됩니다. 날짜가 비어 있거나 유효하지 않으면 `날짜 미정`으로 표시합니다.
 
 ## 페이지 문구 수정
 
-사이트 이름, 상단 소개, GitHub 주소, 페이지 제목 및 검색 설명은 `index.html`에서 수정합니다.
+프로필 이름과 소개는 `profile.js`, 나머지 상단 문구와 GitHub 주소는 `index.html`에서 수정합니다.
 
 ## 로컬 미리보기
 

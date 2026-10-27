@@ -4,53 +4,80 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f7f7f2">
-    <meta name="description" content="직접 만든 프로젝트와 연구 실험을 모아두는 공간입니다.">
-    <meta property="og:title" content="Project Archive">
-    <meta property="og:description" content="Projects, ideas & experiments. 프로젝트와 실험을 만나보세요.">
+    <meta name="description" content="seungju Lee의 프로젝트와 실험, 논문을 모아두는 개인 아카이브입니다.">
+    <meta property="og:title" content="seungju Lee — Projects & Publications">
+    <meta property="og:description" content="Projects, papers & experiments. seungju Lee의 작업을 만나보세요.">
     <meta property="og:type" content="website">
-    <title>Project Archive — Projects, ideas & experiments</title>
+    <title>seungju Lee — Projects & Publications</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./assets/styles.css">
+    <script src="./profile.js" defer></script>
     <script src="./projects.js" defer></script>
+    <script src="./publications.js" defer></script>
     <script src="./assets/site.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#projects">프로젝트 목록으로 이동</a>
     <div class="site-shell">
       <header class="site-header">
-        <a class="brand" href="./" aria-label="Project Archive 홈">
+        <a class="brand" href="./" aria-label="seungju Lee 홈">
           <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span>Project Archive<span class="brand-period">.</span></span>
+          <span><span data-profile-name>seungju Lee</span><span class="brand-period">.</span></span>
         </a>
         <nav aria-label="주 메뉴">
           <a class="nav-link" href="#projects">Projects</a>
-          <a class="github-link" href="https://github.com/sincerelsj" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (새 탭)</span></a>
+          <a class="nav-link" href="#publications">Papers</a>
+          <a class="github-link" href="https://github.com/sincerelsj" target="_blank" rel="noopener noreferrer" aria-label="GitHub (새 탭)"><span class="github-text">GitHub</span> <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
 
       <main>
-        <section class="hero" aria-labelledby="page-title">
-          <p class="eyebrow"><span class="tiny-line" aria-hidden="true"></span> A PERSONAL COLLECTION</p>
-          <h1 id="page-title">Projects, ideas<br>&amp; <em>experiments.</em></h1>
+        <section class="hero personal-hero" aria-labelledby="page-title">
+          <p class="eyebrow"><span class="tiny-line" aria-hidden="true"></span> A PERSONAL RESEARCH ARCHIVE</p>
+          <div class="profile-layout">
+            <div class="profile-intro">
+              <h1 id="page-title"><span id="given-name">seungju</span> <em id="family-name">Lee</em><span class="name-period" aria-hidden="true">.</span></h1>
+              <p class="profile-tagline">Projects, papers <span>&amp; experiments.</span></p>
+              <p class="hero-description" id="profile-bio">직접 만든 프로젝트와 실험, 그리고 논문을 기록합니다.<br>관심 있는 작업을 골라, 자세히 살펴보세요.</p>
+            </div>
+            <figure class="profile-portrait" aria-label="프로필 사진 자리">
+              <div class="portrait-frame" id="portrait-frame">
+                <div class="portrait-placeholder" id="portrait-placeholder">
+                  <svg viewBox="0 0 120 136" fill="none" aria-hidden="true"><circle cx="60" cy="43" r="22"/><path d="M22 113c0-25 15-41 38-41s38 16 38 41"/><path d="M10 7h15M10 7v15M110 7H95M110 7v15M10 128h15M10 128v-15M110 128H95M110 128v-15"/></svg>
+                  <span>PHOTO COMING SOON</span>
+                </div>
+              </div>
+              <figcaption><span class="portrait-dot" aria-hidden="true"></span> <span data-profile-name>seungju Lee</span></figcaption>
+            </figure>
+          </div>
           <div class="hero-bottom">
-            <p class="hero-description">직접 만든 프로젝트와 실험을 모아두는 공간.<br>궁금한 프로젝트를 골라, 직접 경험해 보세요.</p>
+            <p class="profile-updated">LAST UPDATED <time id="profile-updated" datetime="2026-10-27">2026.10.27</time></p>
             <a class="explore-link" href="#projects">프로젝트 둘러보기 <span aria-hidden="true">↓</span></a>
           </div>
-          <span class="hero-orbit" aria-hidden="true"><span></span><i></i></span>
         </section>
 
         <section class="projects-section" id="projects" aria-labelledby="projects-heading">
           <div class="section-heading">
-            <div class="section-title"><h2 id="projects-heading">The collection</h2><span class="count" id="project-count" aria-label="공개 프로젝트 수">01</span></div>
+            <div class="section-title"><h2 id="projects-heading">Projects</h2><span class="count" id="project-count" aria-label="공개 프로젝트 수">01</span></div>
             <span class="collection-note">A little more, over time.</span>
           </div>
           <div class="project-grid" id="project-grid" aria-label="프로젝트 목록"></div>
           <noscript><p>프로젝트 목록을 보려면 JavaScript를 켜주세요. <a href="http://203.253.84.41:38002/">의사결정 과정 실험에 바로 참여하기</a></p></noscript>
-          <div class="collection-end"><span class="end-mark" aria-hidden="true">✳</span><p>More ideas are taking shape.<span>다음 프로젝트도 이곳에서 만나요.</span></p></div>
+        </section>
+
+        <section class="publications-section" id="publications" aria-labelledby="publications-heading">
+          <div class="section-heading">
+            <div class="section-title"><h2 id="publications-heading">Publications</h2><span class="count" id="publication-count" aria-label="공개 논문 수">00</span></div>
+            <span class="collection-note">Papers &amp; conference presentations.</span>
+          </div>
+          <p class="section-description">논문과 학회 발표를 모아두는 공간입니다.</p>
+          <div class="publication-list" id="publication-list" aria-label="논문 목록"></div>
+          <noscript><p>논문 목록을 보려면 JavaScript를 켜주세요.</p></noscript>
+          <div class="collection-end"><span class="end-mark" aria-hidden="true">✳</span><p>More ideas are taking shape.<span>다음 작업도 이곳에서 만나요.</span></p></div>
         </section>
       </main>
 
-      <footer class="site-footer"><span>Project Archive.</span><span>Always a work in progress.</span><span>© <span id="year">2026</span></span></footer>
+      <footer class="site-footer"><span data-profile-name>seungju Lee</span><span>Projects, papers &amp; experiments.</span><span>© <span id="year">2026</span></span></footer>
     </div>
   </body>
 </html>

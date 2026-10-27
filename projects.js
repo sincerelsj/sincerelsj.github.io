@@ -8,6 +8,9 @@ window.PROJECTS = [
     subtitle: "Task Complexity Experiment",
     description: "선택지와 정보의 양에 따라 달라지는 탐색과 선택. 아파트 선택 과제를 통해 의사결정 과정을 살펴보는 웹 실험입니다.",
     category: "EXPERIMENT",
+    // 실험 수행일이 아니라 이 아카이브에 처음 등록한 날짜입니다.
+    date: "2026-10-27",
+    dateLabel: "등록",
     thumbnail: "assets/images/decision-experiment.svg",
     thumbnailAlt: "선택지 두 개와 정보 네 가지로 구성된 실험 화면을 표현한 그림",
     href: "http://203.253.84.41:38002/",
@@ -17,6 +20,8 @@ window.PROJECTS = [
   },
   {
     id: "project-02",
+    date: "",
+    dateLabel: "등록",
     title: "프로젝트 제목",
     subtitle: "A new project",
     description: "새로운 프로젝트가 이곳에 추가됩니다.",
@@ -30,6 +35,8 @@ window.PROJECTS = [
   },
   {
     id: "project-03",
+    date: "",
+    dateLabel: "등록",
     title: "프로젝트 제목",
     subtitle: "A new project",
     description: "새로운 프로젝트가 이곳에 추가됩니다.",
@@ -43,6 +50,8 @@ window.PROJECTS = [
   },
   {
     id: "project-04",
+    date: "",
+    dateLabel: "등록",
     title: "프로젝트 제목",
     subtitle: "A new project",
     description: "새로운 프로젝트가 이곳에 추가됩니다.",
@@ -56,6 +65,8 @@ window.PROJECTS = [
   },
   {
     id: "project-05",
+    date: "",
+    dateLabel: "등록",
     title: "프로젝트 제목",
     subtitle: "A new project",
     description: "새로운 프로젝트가 이곳에 추가됩니다.",
@@ -69,6 +80,8 @@ window.PROJECTS = [
   },
   {
     id: "project-06",
+    date: "",
+    dateLabel: "등록",
     title: "프로젝트 제목",
     subtitle: "A new project",
     description: "새로운 프로젝트가 이곳에 추가됩니다.",
