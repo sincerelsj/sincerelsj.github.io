@@ -145,6 +145,17 @@
     body.append(footer);
     surface.append(thumbnail, body);
     article.append(surface);
+    const pdfUrl = available ? destination(project.pdf) : null;
+    if (pdfUrl) {
+      article.classList.add("has-pdf");
+      // Sibling links keep the PDF independent of the whole-card GitHub link.
+      const pdfLink = node("a", "project-pdf-link", `${project.pdfLabel || "PDF"} ↗`);
+      pdfLink.href = pdfUrl;
+      pdfLink.target = "_blank";
+      pdfLink.rel = "noopener noreferrer";
+      pdfLink.setAttribute("aria-label", `${project.title} — ${project.pdfLabel || "PDF"} (새 탭)`);
+      article.append(pdfLink);
+    }
     grid.append(article);
   }
 

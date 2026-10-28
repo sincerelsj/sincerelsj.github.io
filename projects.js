@@ -50,6 +50,8 @@ window.PROJECTS = [
     thumbnailAlt: "",
     href: "https://github.com/sincerelsj/Task-Complexity",
     linkLabel: "GitHub에서 보기",
+    pdf: "assets/papers/agent-usability-poster.pdf",
+    pdfLabel: "포스터 PDF",
     placeholder: false,
     status: "연구 참여",
     tone: "blue"

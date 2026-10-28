@@ -11,5 +11,5 @@ window.PROFILE = {
   interests: ["Human–Agent Interaction", "XR & UX", "Multimodal Analysis"],
   photo: "",
   photoAlt: "seungju Lee의 프로필 사진",
-  updated: "2026-10-27"
+  updated: "2026-10-28"
 };

@@ -183,3 +183,11 @@ html{scroll-padding-top:calc(var(--header-current-size,var(--header-expanded-siz
   .header-motto{left:117px;font-size:9px}
 }
 @media(prefers-reduced-motion:reduce){.header-motto{transform:none}}
+
+/* Separate PDF action alongside the card's main destination. */
+.project-card.has-pdf{position:relative;transition:transform .2s ease}
+.project-card.has-pdf:hover{transform:translateY(-4px)}
+.project-card.has-pdf:hover .card-surface{transform:none;box-shadow:0 12px 28px #34442d0c;border-color:#bdccb4}
+.project-pdf-link{position:absolute;right:58px;bottom:13px;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:6px 10px;border:1px solid #ccd9bf;border-radius:20px;background:#edf2e5;color:#4a653d;font-size:10px;font-weight:600;line-height:1.5;white-space:nowrap}
+.project-pdf-link:hover{background:#426b4a;border-color:#426b4a;color:#fff}
+@media(max-width:700px){.project-pdf-link{bottom:14px;right:60px}}

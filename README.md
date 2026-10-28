@@ -44,6 +44,25 @@
 
 현재 실험 버튼은 `http://203.253.84.41:38002/`를 새 탭으로 엽니다. 주소가 바뀌면 `projects.js`의 첫 번째 `href`와 `index.html`의 `noscript` 링크를 바꾸세요.
 
+### 프로젝트 PDF 추가 및 교체
+
+AI 에이전트 기반 사용성 평가 카드에는 GitHub 링크와 별도로 **포스터 PDF** 버튼이 있습니다. 버튼은 `assets/papers/agent-usability-poster.pdf`를 새 탭으로 엽니다.
+
+나중에 문서를 교체하는 방법:
+
+1. 새 문서를 PDF로 저장합니다.
+2. `assets/papers/agent-usability-poster.pdf`를 같은 이름의 새 PDF로 덮어쓰고 커밋·푸시합니다. GitHub 웹에서도 해당 폴더의 **Add file → Upload files**에서 같은 파일명으로 업로드해 교체할 수 있습니다.
+3. GitHub Pages 배포가 끝나면 기존 버튼에서 새 문서가 열립니다.
+
+다른 파일명이나 외부 PDF 주소를 쓰려면 `projects.js`의 해당 카드에서 다음 두 값만 바꾸세요. `pdf`를 빈 문자열로 두면 PDF 버튼을 숨깁니다.
+
+```js
+pdf: "assets/papers/agent-usability-poster.pdf",
+pdfLabel: "포스터 PDF",
+```
+
+PDF 버튼은 카드의 GitHub 링크와 독립적으로 동작합니다. PowerPoint를 교체할 때는 먼저 PDF로 내보낸 파일을 업로드하세요.
+
 ## 논문 추가
 
 `publications.js`에서 논문을 수정하거나 항목을 추가합니다. 현재는 제공된 2026-10-26 이력서를 바탕으로 게재 논문 2편, HAI 2026 포스터 1편, 투고 원고 1편을 등록했습니다. 포스터는 채택·발표 예정, 원고는 투고 완료 상태로 구분합니다. 이력서에 없는 투고 원고의 저자 목록과 투고일은 비워 두었습니다.
