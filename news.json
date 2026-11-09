@@ -1,33 +1,19 @@
 {
-  "edition": "2026-11-09",
+  "edition": "2026-11-10",
   "items": [
     {
       "source": "Anthropic",
-      "published": "2026-11-06",
-      "title": "에이전트는 지난 세션에서 무엇을 기억해야 할까",
-      "summary": "상호작용 로그, 메모 노트, 구조화된 지식, 새 세션에 주입하는 컨텍스트를 구분했다. 세션 사이에 기록을 정리하는 Dreaming을 적용해 장기 메모리의 효과를 평가했다.",
-      "url": "https://www.anthropic.com/research/components-of-agent-memory"
+      "published": "2026-11-09",
+      "title": "Claude로 전자기기 시제품 세 종류 설계",
+      "summary": "Claude가 회로도와 PCB 배선, 케이스, 펌웨어를 설계했다. Diode 엔지니어가 조립한 시제품 세 종류는 회로 수정 없이 작동했다. 복잡한 배선에는 Claude가 직접 작성한 경로 탐색 도구를 사용했다.",
+      "url": "https://www.anthropic.com/research/claude-electronics-design"
     },
     {
-      "source": "Anthropic",
+      "source": "우아한형제들",
       "published": "2026-11-06",
-      "title": "Project EVE · MMORPG에서 시험한 에이전트 협업",
-      "summary": "Claude가 게임 내 시장에서 자율 거래를 하고, 여러 에이전트가 함께 함선을 건조했다. 반복 작업을 코드에 위임하는 방식과 공유 정보 검증의 어려움을 살폈다.",
-      "url": "https://www.anthropic.com/research/project-eve-claude-plays-mmorpgs"
-    },
-    {
-      "source": "OpenAI",
-      "published": "2026-11-06",
-      "title": "BioBasicsBench · 실제 실험실 데이터를 읽는 AI 평가",
-      "summary": "실험 이미지와 장비 출력 등 원자료를 사용해 100개 실험실 과업을 구성했다. 결과 해석과 오류 탐지, 근거가 부족한 경우의 판단을 함께 평가한다.",
-      "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science/"
-    },
-    {
-      "source": "Anthropic",
-      "published": "2026-11-06",
-      "title": "과학적 모델의 설계와 해석을 돕는 AI",
-      "summary": "과학적 모델링을 모델 구조 설계, 관측 데이터에 맞춘 모수 추정, 결과 해석으로 나누고 시뮬레이션 기반 추론에서 AI를 활용하는 방법을 살폈다.",
-      "url": "https://www.anthropic.com/research/teaching-ai-to-build-scientific-models"
+      "title": "AI Gateway로 에이전트의 권한과 예산 관리",
+      "summary": "AI Studio에서 프로젝트의 정책을 승인하고, LiteLLM 기반 게이트웨이에서 허용 모델·도구와 예산을 적용한다. 한 프로젝트에서 프롬프트 캐싱으로 요청당 비용은 84% 줄었고 평균 응답 시간은 0.79초에서 1.33초로 늘었다.",
+      "url": "https://techblog.woowahan.com/27890/"
     }
   ]
 }
