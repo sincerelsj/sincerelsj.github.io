@@ -46,7 +46,7 @@
 
 기간을 표시하려면 `dateEnd`를 추가합니다. 연구 과제 카드에는 이력서의 **과제 기간**을 사용했으며, 개인의 참여 시작일을 뜻하지 않습니다. 링크가 없는 연구 과제도 제목과 참여 내용을 표시할 수 있습니다. `organization`은 과제 기관, `status`는 카드 하단 문구입니다.
 
-현재 실험 버튼은 `http://203.253.84.41:38002/`를 새 탭으로 엽니다. 주소가 바뀌면 `projects.js`의 첫 번째 `href`와 `index.html`의 `noscript` 링크를 바꾸세요.
+의사결정 과정 실험 카드는 [Task-Complexity GitHub 저장소](https://github.com/sincerelsj/Task-Complexity)를 새 탭으로 엽니다. 주소가 바뀌면 `projects.js`의 첫 번째 `href`와 `index.html`의 `noscript` 링크를 바꾸세요.
 
 ### 프로젝트 PDF 추가 및 교체
 

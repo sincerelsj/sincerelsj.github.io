@@ -13,8 +13,8 @@ window.PROJECTS = [
     dateLabel: "등록",
     thumbnail: "assets/images/decision-experiment.svg",
     thumbnailAlt: "선택지 두 개와 정보 네 가지로 구성된 실험 화면을 표현한 그림",
-    href: "http://203.253.84.41:38002/",
-    linkLabel: "실험 참여하기",
+    href: "https://github.com/sincerelsj/Task-Complexity",
+    linkLabel: "GitHub에서 보기",
     placeholder: false,
     tone: "sage"
   },
