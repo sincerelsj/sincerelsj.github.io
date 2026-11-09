@@ -11,11 +11,13 @@
     <title>seungju Lee — Projects & Publications</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/news.css">
     <script src="./profile.js" defer></script>
     <script src="./projects.js" defer></script>
     <script src="./publications.js" defer></script>
     <script src="./background.js" defer></script>
     <script src="./assets/site.js" defer></script>
+    <script src="./assets/news.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#projects">프로젝트 목록으로 이동</a>
@@ -31,6 +33,7 @@
         <p class="header-motto" data-profile-motto aria-hidden="true">Projects, papers &amp; experiments.</p>
         <nav aria-label="주 메뉴">
           <a class="nav-link nav-about" href="#about">About</a>
+          <a class="nav-link" href="#news">News</a>
           <a class="nav-link" href="#projects">Projects</a>
           <a class="nav-link" href="#publications">Papers</a>
           <a class="github-link" href="https://github.com/sincerelsj" target="_blank" rel="noopener noreferrer" aria-label="GitHub (새 탭)"><span class="github-text">GitHub</span> <span aria-hidden="true">↗</span></a>
@@ -66,6 +69,17 @@
       </header>
 
       <main>
+        <section class="news-section" id="news" aria-labelledby="news-heading">
+          <div class="section-heading">
+            <div class="section-title"><h2 id="news-heading">AI Research News</h2></div>
+            <time class="news-edition" id="news-edition" hidden></time>
+          </div>
+          <p class="section-description">공식 연구·기술 블로그에서 고른 AI 연구와 엔지니어링 소식.</p>
+          <p class="news-status" id="news-status" role="status">브리핑을 불러오는 중입니다.</p>
+          <div class="news-grid" id="news-list"></div>
+          <noscript><p class="news-status"><a href="./news.json">브리핑 데이터 보기</a></p></noscript>
+        </section>
+
         <section class="projects-section" id="projects" aria-labelledby="projects-heading">
           <div class="section-heading">
             <div class="section-title"><h2 id="projects-heading">Projects</h2><span class="count" id="project-count" aria-label="공개 프로젝트 수">01</span></div>

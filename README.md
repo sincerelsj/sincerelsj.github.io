@@ -12,6 +12,10 @@
 
 `motto`는 큰 프로필과 스크롤 후 축약되는 상단 이름 바에 함께 표시됩니다. 페이지를 아래로 스크롤하면 상단 바가 줄어들고, 이름을 누르면 다시 맨 위의 큰 프로필로 돌아갑니다. `affiliation`과 `interests`로 소속 및 연구 분야를 수정합니다.
 
+## AI 연구 뉴스
+
+홈페이지의 `AI Research News`는 `news.json`에서 최신 브리핑을 읽습니다. `edition`은 한국시간 기준 브리핑 날짜이며 `items`의 각 항목에는 `source`, `published`, `title`, `summary`, `url`을 넣습니다. `published`는 원문 발행일이고, `url`은 HTTPS 원문 주소입니다. 브리핑을 교체할 때는 `news.json`을 갱신해 `main`에 반영합니다.
+
 ## 프로젝트 추가
 
 1. 썸네일 파일을 `assets/images/`에 넣습니다. 권장 비율은 16:10이며 JPG, PNG, WebP, SVG를 사용할 수 있습니다.
