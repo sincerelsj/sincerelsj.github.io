@@ -30,7 +30,10 @@ window.PROJECTS = [
     dateLabel: "과제",
     title: "AI 에이전트 기반 사용성 평가",
     subtitle: "AI Agents & Usability Evaluation",
-    description: "시각-운동 행동 기반 페르소나와 AI 에이전트를 활용한 정량적 사용성 평가 시스템 개발. AI 에이전트와 인간의 정합성을 검증하는 실험 설계 및 수행에 참여합니다.",
+    description: "시각-운동 행동 기반 페르소나와 AI 에이전트를 활용해 사용성을 평가합니다. 에이전트와 인간의 정합성을 검증하는 실험 설계·수행에 참여합니다.",
+    editions: [
+      { title: "Task Complexity · HAI 2026", detail: "과제 복잡도에 따른 AI 에이전트의 정보 탐색 패턴 분석" }
+    ],
     organization: "한국외국어대학교 연구산학협력단",
     category: "RESEARCH",
     thumbnail: "assets/images/task-complexity-overview.png",
@@ -70,9 +73,9 @@ window.PROJECTS = [
     date: "2025-07",
     dateEnd: "2026-12",
     dateLabel: "과제",
-    title: "신문산업실태조사",
-    subtitle: "Newspaper Industry Survey · 2025–2026",
-    description: "선형회귀와 머신러닝을 활용한 무응답 추정과 AI 활용 방안 자문에 참여했습니다.",
+    title: "미디어 산업 실태조사",
+    subtitle: "Media Industry Surveys",
+    description: "2025·2026 신문산업실태조사에서 선형회귀·머신러닝 기반 무응답 추정과 AI 활용 방안 자문에 참여합니다.",
     editions: [
       { title: "2025 신문산업실태조사", detail: "생성형 AI 활용 방안 자문" },
       { title: "2026 신문산업실태조사", detail: "AI 에이전트 활용 방안 자문" }
