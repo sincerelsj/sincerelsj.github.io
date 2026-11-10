@@ -199,7 +199,7 @@
         link.href = actionUrl;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.setAttribute("aria-label", `${project.title} — ${label} ${t("(새 탭)")}`);
+        link.setAttribute("aria-label", `${project.title} — ${t(label)} ${t("(새 탭)")}`);
         actions.append(link);
       }
     }
@@ -301,7 +301,7 @@
         link.href = url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.setAttribute("aria-label", `${paper.title} — ${label} ${t("(새 탭)")}`);
+        link.setAttribute("aria-label", `${paper.title} — ${t(label)} ${t("(새 탭)")}`);
         links.append(link);
       }
     }
