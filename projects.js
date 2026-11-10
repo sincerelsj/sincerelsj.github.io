@@ -83,8 +83,8 @@ window.PROJECTS = [
     subtitle: "Media Industry Surveys",
     description: "2025·2026 신문산업실태조사에서 선형회귀·머신러닝 기반 무응답 추정과 AI 활용 방안 자문에 참여합니다.",
     activities: [
-      { type: "SURVEY", title: "2025 신문산업실태조사", date: "2025", summary: "선형회귀·머신러닝 기반 무응답 추정 및 생성형 AI 활용 방안 자문", href: "https://github.com/sincerelsj/presspatrol", linkLabel: "GitHub에서 보기" },
-      { type: "SURVEY", title: "2026 신문산업실태조사", date: "2026", summary: "선형회귀·머신러닝 기반 무응답 추정 및 AI 에이전트 활용 방안 자문", href: "https://github.com/sincerelsj/presspatrol", linkLabel: "GitHub에서 보기" }
+      { type: "SURVEY", title: "2025 신문산업실태조사", date: "2025", summary: "선형회귀·머신러닝 기반 무응답 추정 및 생성형 AI 활용 방안 자문", href: "https://www.kpf.or.kr/front/research/realityDetail.do?mode=W&seq=600244&link_g_topmenu_id=676f2f0f377b4b19840685a46f69a233&link_g_submenu_id=743db6272d36422bae2ea1e9f6f35cec&link_g_homepage=F", linkLabel: "공식 보고서 보기" },
+      { type: "SURVEY", title: "2026 신문산업실태조사", date: "2026", summary: "선형회귀·머신러닝 기반 무응답 추정 및 AI 에이전트 활용 방안 자문", href: "", linkLabel: "공식 보고서 보기" }
     ],
     sponsors: [{ name: "한국언론진흥재단", logo: "assets/images/organizations/kpf.png" }],
     organization: "한국언론진흥재단",

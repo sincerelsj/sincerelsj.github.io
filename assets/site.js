@@ -77,7 +77,32 @@
   function renderActivity(activity) {
     const publication = (window.PUBLICATIONS || []).find(paper => paper.id === activity.publicationId);
     const entry = { ...publication, ...activity };
-    const card = node("article", "activity-card");
+    const card = node("details", "activity-card");
+    const summary = node("summary", "activity-toggle");
+    summary.append(node("span", "publication-type", entry.type), node("span", "activity-title", entry.title));
+    const content = node("div", "activity-content");
+    card.append(summary, content);
+    let pinned = false;
+    let hovering = false;
+    let dismissed = false;
+    const update = () => { card.open = pinned || (hovering && !dismissed); };
+    card.addEventListener("pointerenter", event => {
+      if (event.pointerType !== "mouse") return;
+      hovering = true;
+      dismissed = false;
+      update();
+    });
+    card.addEventListener("pointerleave", () => {
+      hovering = false;
+      dismissed = false;
+      update();
+    });
+    summary.addEventListener("click", event => {
+      event.preventDefault();
+      pinned = !pinned;
+      dismissed = !pinned;
+      update();
+    });
     const meta = node("div", "publication-meta");
     meta.append(node("span", "publication-type", entry.type));
     if (entry.status) meta.append(node("span", "publication-status", entry.status));
@@ -87,16 +112,16 @@
       time.dateTime = date.raw;
       meta.append(time);
     }
-    card.append(meta, node("h5", "activity-title", entry.title));
+    content.append(meta, node("h5", "activity-full-title", entry.title));
     if (entry.authors) {
       const authors = node("p", "publication-authors");
       for (const part of entry.authors.split(/(Seungju Lee|이승주)/gi)) {
         authors.append(/^(Seungju Lee|이승주)$/i.test(part) ? node("strong", "", part) : document.createTextNode(part));
       }
-      card.append(authors);
+      content.append(authors);
     }
-    if (entry.venue) card.append(node("p", "publication-venue", entry.venue));
-    if (entry.summary) card.append(node("p", "activity-summary", entry.summary));
+    if (entry.venue) content.append(node("p", "publication-venue", entry.venue));
+    if (entry.summary) content.append(node("p", "activity-summary", entry.summary));
     const links = node("div", "activity-links");
     for (const [field, label] of [["href", entry.linkLabel || "논문"], ["pdf", "논문 PDF"], ["poster", "포스터 PDF"], ["code", "GitHub 코드"]]) {
       const url = destination(entry[field]);
@@ -108,7 +133,7 @@
       link.setAttribute("aria-label", `${entry.title} — ${t(label)} ${t("(새 탭)")}`);
       links.append(link);
     }
-    card.append(links);
+    content.append(links);
     return card;
   }
 

@@ -88,5 +88,6 @@ window.ENGLISH = {
   "아파트 선택 과제의 조건을 선택하고 정보 탐색 과정을 직접 체험할 수 있습니다.": "Select an apartment-choice task condition and explore the interactive information-search interface.",
   "온라인 리뷰와 트랜스포머 모델을 활용해 VR 게임의 사용자 경험 차원과 경험 수준을 분석한 연구입니다.": "This study examines dimensions and levels of user experience in VR games through online reviews using transformer models.",
   "선형회귀·머신러닝 기반 무응답 추정 및 생성형 AI 활용 방안 자문": "Nonresponse estimation using linear regression and machine learning, with consultation on generative AI applications.",
-  "선형회귀·머신러닝 기반 무응답 추정 및 AI 에이전트 활용 방안 자문": "Nonresponse estimation using linear regression and machine learning, with consultation on AI agent applications."
+  "선형회귀·머신러닝 기반 무응답 추정 및 AI 에이전트 활용 방안 자문": "Nonresponse estimation using linear regression and machine learning, with consultation on AI agent applications.",
+  "공식 보고서 보기": "View official report"
 };
