@@ -200,6 +200,10 @@ html{scroll-padding-top:calc(var(--header-current-size,var(--header-expanded-siz
 .project-resource-link:hover{background:#dfe9d7}
 .project-resource-link:focus-visible{outline-offset:-3px}
 .project-card.has-resources .card-surface:hover{transform:none}
+.card-body:has(.project-editions) .card-description{flex:none;margin-bottom:12px}
+.project-editions{display:grid;gap:8px;list-style:none;padding:0;margin:0 0 14px}
+.project-edition{display:grid;gap:2px;border-left:2px solid #d6dfcb;padding-left:9px;color:var(--muted);font-size:11px;line-height:1.5}
+.project-edition strong{color:var(--ink);font-weight:600}
 .publication-pdf-pending{font-size:10px;color:#858b80;padding:7px 12px;border:1px dashed #d6dfcb;border-radius:20px;white-space:nowrap}
 .publication-links{max-width:210px;padding-top:0;align-content:start}
 .card-meta{flex-wrap:wrap;row-gap:7px}

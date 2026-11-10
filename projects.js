@@ -1,26 +1,49 @@
 // 프로젝트를 추가하거나 수정할 때는 이 파일만 편집하세요.
 // thumbnail: "assets/images/파일명.webp"처럼 이미지 경로를 지정합니다.
 // placeholder를 false로 바꾸고 title, description, href를 채우면 공개 카드가 됩니다.
+window.CONFERENCE_EXPERIMENT = {
+  id: "decision-experiment",
+  title: "HAI 2026 · 에이전트 정보 탐색 실험",
+  subtitle: "How Task Complexity Shapes Information Search Patterns",
+  description: "HAI 2026 포스터 논문의 실험 구현입니다. 아파트 선택 과제의 선택지 2·4·8·12개와 정보 차원 4·8·12개를 조합한 12개 조건에서 AI 에이전트의 정보 탐색 패턴을 분석합니다.",
+  category: "HAI 2026 · EXPERIMENT",
+  pdf: "assets/papers/agent-usability-poster.pdf",
+  pdfLabel: "HAI 포스터 PDF",
+  // 실험 수행일이 아니라 이 아카이브에 처음 등록한 날짜입니다.
+  date: "2026-10-27",
+  dateLabel: "등록",
+  thumbnail: "assets/images/task-complexity-overview.png",
+  thumbnailFit: "contain",
+  thumbnailAlt: "Task-Complexity 저장소의 아파트 선택 과제와 에이전트 정보 탐색 실험 개요",
+  href: "http://203.253.84.41:38002/lsj/",
+  linkLabel: "실험 화면 열기",
+  code: "https://github.com/sincerelsj/Task-Complexity",
+  placeholder: false,
+  tone: "sage"
+};
+
 window.PROJECTS = [
   {
-    id: "decision-experiment",
-    title: "HAI 2026 · 에이전트 정보 탐색 실험",
-    subtitle: "How Task Complexity Shapes Information Search Patterns",
-    description: "HAI 2026 포스터 논문의 실험 구현입니다. 아파트 선택 과제의 선택지 2·4·8·12개와 정보 차원 4·8·12개를 조합한 12개 조건에서 AI 에이전트의 정보 탐색 패턴을 분석합니다.",
-    category: "HAI 2026 · EXPERIMENT",
-    pdf: "assets/papers/agent-usability-poster.pdf",
-    pdfLabel: "HAI 포스터 PDF",
-    // 실험 수행일이 아니라 이 아카이브에 처음 등록한 날짜입니다.
-    date: "2026-10-27",
-    dateLabel: "등록",
+    id: "project-03",
+    date: "2026-03",
+    dateEnd: "2029-02",
+    dateLabel: "과제",
+    title: "AI 에이전트 기반 사용성 평가",
+    subtitle: "AI Agents & Usability Evaluation",
+    description: "시각-운동 행동 기반 페르소나와 AI 에이전트를 활용한 정량적 사용성 평가 시스템 개발. AI 에이전트와 인간의 정합성을 검증하는 실험 설계 및 수행에 참여합니다.",
+    organization: "한국외국어대학교 연구산학협력단",
+    category: "RESEARCH",
     thumbnail: "assets/images/task-complexity-overview.png",
     thumbnailFit: "contain",
-    thumbnailAlt: "Task-Complexity 저장소의 아파트 선택 과제와 에이전트 정보 탐색 실험 개요",
-    href: "http://203.253.84.41:38002/lsj/",
-    linkLabel: "실험 화면 열기",
-    code: "https://github.com/sincerelsj/Task-Complexity",
+    thumbnailAlt: "Task-Complexity의 에이전트 정보 탐색 실험 개요",
+    href: "https://github.com/sincerelsj/Task-Complexity",
+    linkLabel: "GitHub에서 보기",
+    pdf: "assets/papers/agent-usability-poster.pdf",
+    pdfLabel: "HAI 포스터 PDF",
+    experiment: window.CONFERENCE_EXPERIMENT.href,
     placeholder: false,
-    tone: "sage"
+    status: "연구 참여",
+    tone: "blue"
   },
   {
     id: "project-02",
@@ -43,78 +66,25 @@ window.PROJECTS = [
     tone: "sand"
   },
   {
-    id: "project-03",
-    date: "2026-03",
-    dateEnd: "2029-02",
-    dateLabel: "과제",
-    title: "AI 에이전트 기반 사용성 평가",
-    subtitle: "AI Agents & Usability Evaluation",
-    description: "시각-운동 행동 기반 페르소나와 AI 에이전트를 활용한 정량적 사용성 평가 시스템 개발. AI 에이전트와 인간의 정합성을 검증하는 실험 설계 및 수행에 참여합니다.",
-    organization: "한국외국어대학교 연구산학협력단",
-    category: "RESEARCH",
-    thumbnail: "assets/images/task-complexity-overview.png",
-    thumbnailFit: "contain",
-    thumbnailAlt: "Task-Complexity의 에이전트 정보 탐색 실험 개요",
-    href: "https://github.com/sincerelsj/Task-Complexity",
-    linkLabel: "GitHub에서 보기",
-    pdf: "assets/papers/agent-usability-poster.pdf",
-    pdfLabel: "포스터 PDF",
-    placeholder: false,
-    status: "연구 참여",
-    tone: "blue"
-  },
-  {
-    id: "project-04",
+    id: "press-industry-surveys",
     date: "2025-07",
-    dateEnd: "2025-12",
-    dateLabel: "과제",
-    title: "2025 신문산업실태조사",
-    subtitle: "Newspaper Industry Survey · 2025",
-    description: "선형회귀·머신러닝 기반 무응답 추정과 생성형 인공지능 사용 방안 자문에 참여했습니다.",
-    organization: "한국언론진흥재단",
-    category: "DATA & AI",
-    thumbnail: "assets/images/presspatrol-banner.svg",
-    thumbnailFit: "contain",
-    thumbnailAlt: "PressPatrol — A digital inspector for online news",
-    href: "https://github.com/sincerelsj/presspatrol",
-    linkLabel: "GitHub에서 보기",
-    placeholder: false,
-    status: "연구 참여",
-    tone: "rose"
-  },
-  {
-    id: "project-05",
-    date: "2026-01",
     dateEnd: "2026-12",
     dateLabel: "과제",
-    title: "2026 신문산업실태조사",
-    subtitle: "Newspaper Industry Survey · 2026",
-    description: "선형회귀·머신러닝 기반 무응답 추정과 AI 에이전트 활용 방안 자문에 참여합니다.",
+    title: "신문산업실태조사",
+    subtitle: "Newspaper Industry Survey · 2025–2026",
+    description: "선형회귀와 머신러닝을 활용한 무응답 추정과 AI 활용 방안 자문에 참여했습니다.",
+    editions: [
+      { title: "2025 신문산업실태조사", detail: "생성형 AI 활용 방안 자문" },
+      { title: "2026 신문산업실태조사", detail: "AI 에이전트 활용 방안 자문" }
+    ],
     organization: "한국언론진흥재단",
     category: "DATA & AI",
     thumbnail: "assets/images/presspatrol-banner.svg",
     thumbnailFit: "contain",
     thumbnailAlt: "PressPatrol — A digital inspector for online news",
     href: "https://github.com/sincerelsj/presspatrol",
-    linkLabel: "GitHub에서 보기",
+    linkLabel: "PressPatrol GitHub 보기",
     placeholder: false,
-    status: "연구 참여",
-    tone: "sage"
-  },
-  {
-    id: "project-06",
-    date: "",
-    dateLabel: "등록",
-    title: "프로젝트 제목",
-    subtitle: "A new project",
-    description: "새로운 프로젝트가 이곳에 추가됩니다.",
-    category: "PROJECT",
-    thumbnail: "",
-    thumbnailFit: "contain",
-    thumbnailAlt: "",
-    href: "",
-    linkLabel: "프로젝트 보기",
-    placeholder: true,
-    tone: "lilac"
+    tone: "rose"
   }
 ];

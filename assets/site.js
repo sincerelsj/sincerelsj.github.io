@@ -73,8 +73,7 @@
     document.getElementById("portrait-frame").append(photo);
   }
 
-  let experimentCard;
-  for (const [index, project] of projects.entries()) {
+  function renderProjectCard(project, index = 0) {
     const url = destination(project.href);
     const available = !project.placeholder;
     const clickable = available && Boolean(url);
@@ -112,7 +111,7 @@
         image.style.objectFit = project.thumbnailFit === "contain" ? "contain" : "cover";
         image.src = project.thumbnail;
         image.alt = project.thumbnailAlt || project.title;
-        image.loading = index === 0 ? "eager" : "lazy";
+        image.loading = index <= 1 ? "eager" : "lazy";
         image.decoding = "async";
         image.width = 720;
         image.height = 450;
@@ -121,8 +120,8 @@
         thumbnail.append(image);
       }
 
-      const number = String(index + 1).padStart(2, "0");
-      thumbnail.append(node("span", "thumbnail-number", number));
+      const number = String(index).padStart(2, "0");
+      if (index > 0) thumbnail.append(node("span", "thumbnail-number", number));
       if (clickable) {
         const indicator = node("span", "thumbnail-indicator");
         const destinationLabel = new URL(url).hostname === "github.com" ? "GITHUB" : "INTERACTIVE";
@@ -152,6 +151,15 @@
     }
     meta.append(dateLabel);
     body.append(meta, node("h3", "card-title", project.title), node("p", "card-subtitle", project.subtitle), node("p", "card-description", project.description));
+    if (project.editions?.length) {
+      const editions = node("ul", "project-editions");
+      for (const edition of project.editions) {
+        const item = node("li", "project-edition");
+        item.append(node("strong", "", edition.title), node("span", "", edition.detail));
+        editions.append(item);
+      }
+      body.append(editions);
+    }
     if (project.organization) body.append(node("p", "project-organization", `과제 기관 · ${project.organization}`));
 
     const footer = node("div", "card-footer");
@@ -165,6 +173,7 @@
     const actions = node("div", "project-links");
     if (available) {
       for (const [value, label] of [
+        [project.experiment, "Task Complexity 실험"],
         [project.pdf, project.pdfLabel || "PDF"],
         [project.code, "GitHub 코드"]
       ]) {
@@ -182,17 +191,19 @@
       article.classList.add("has-resources");
       article.append(actions);
     }
-    grid.append(article);
-    if (project.id === "decision-experiment" && clickable) experimentCard = article;
+    return article;
+  }
+
+  for (const [index, project] of projects.entries()) {
+    grid.append(renderProjectCard(project, index + 1));
   }
 
   const count = projects.filter(project => !project.placeholder).length;
-  const projectCount = document.getElementById("project-count");
-  projectCount.textContent = String(count).padStart(2, "0");
+  document.getElementById("project-count").textContent = String(count).padStart(2, "0");
 
-  if (experimentCard) {
+  const experiment = window.CONFERENCE_EXPERIMENT;
+  if (experiment) {
     const feature = document.getElementById("conference-feature");
-    const originalNextCard = experimentCard.nextElementSibling;
     const jump = document.getElementById("conference-jump");
     // HAI 2026: show the experiment during November 16–19, Korea time.
     const startsAt = Date.parse("2026-11-16T00:00:00+09:00");
@@ -201,11 +212,9 @@
     function updateConferenceFeature() {
       const now = Date.now();
       const featured = now >= startsAt && now < endsAt;
-      if (featured) feature.append(experimentCard);
-      else if (experimentCard.parentElement === feature) grid.insertBefore(experimentCard, originalNextCard);
+      if (featured && feature.hidden) feature.append(renderProjectCard(experiment));
       feature.hidden = !featured;
       jump.hidden = !featured;
-      projectCount.textContent = String(count - Number(featured)).padStart(2, "0");
 
       const nextChange = now < startsAt ? startsAt : endsAt;
       if (now < nextChange) {

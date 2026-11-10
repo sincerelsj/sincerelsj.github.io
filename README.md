@@ -46,7 +46,9 @@
 
 기간을 표시하려면 `dateEnd`를 추가합니다. 연구 과제 카드에는 이력서의 **과제 기간**을 사용했으며, 개인의 참여 시작일을 뜻하지 않습니다. 링크가 없는 연구 과제도 제목과 참여 내용을 표시할 수 있습니다. `organization`은 과제 기관, `status`는 카드 하단 문구입니다.
 
-HAI 2026 실험 카드는 실험 화면을 새 탭으로 엽니다. 주소가 바뀌면 `projects.js`의 `decision-experiment` 항목 `href`와 `index.html`의 `noscript` 링크를 바꾸세요. 카드의 `code`는 GitHub 저장소 링크입니다. 한국시간 2026-11-16 00:00부터 2026-11-20 00:00 전까지는 `assets/site.js`가 이 카드를 프로필 위에 표시합니다.
+AI 에이전트 기반 사용성 평가 카드에서 Task Complexity 실험을 열 수 있습니다. 주소가 바뀌면 `projects.js`의 `CONFERENCE_EXPERIMENT.href`와 `index.html`의 `noscript` 링크를 바꾸세요. 한국시간 2026-11-16 00:00부터 2026-11-20 00:00 전까지는 실험 소개가 프로필 위에도 표시됩니다.
+
+신문산업실태조사의 연도별 내역은 `press-industry-surveys` 항목의 `editions`에 있습니다. 2026 잡지 조사를 같은 카드에 추가할 경우 여기에 `{ title, detail }` 항목을 한 줄 더 넣으면 됩니다.
 
 ### 프로젝트 PDF 추가 및 교체
 
