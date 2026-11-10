@@ -1,6 +1,7 @@
 "use strict";
 
 (() => {
+  const t = window.LOCALE.text;
   const projects = window.PROJECTS || [];
   const grid = document.getElementById("project-grid");
   const tones = new Set(["sage", "sand", "blue", "rose", "lilac"]);
@@ -8,7 +9,7 @@
   function node(tag, className, text) {
     const element = document.createElement(tag);
     if (className) element.className = className;
-    if (text !== undefined) element.textContent = text;
+    if (text !== undefined) element.textContent = t(text);
     return element;
   }
 
@@ -43,7 +44,7 @@
     document.querySelector(".brand").setAttribute("aria-label", `${fullName} 홈`);
     document.title = `${fullName} — Projects & Publications`;
     document.querySelector('meta[property="og:title"]').content = document.title;
-    document.querySelector('meta[name="description"]').content = `${fullName}의 프로젝트와 실험, 논문을 모아두는 개인 아카이브입니다.`;
+    document.querySelector('meta[name="description"]').content = t("seungju Lee의 프로젝트와 실험, 논문을 모아두는 개인 아카이브입니다.");
   }
   if (profile.bio) document.getElementById("profile-bio").textContent = profile.bio;
   if (profile.affiliation) document.getElementById("profile-affiliation").textContent = profile.affiliation;
@@ -83,7 +84,7 @@
       surface.href = url;
       surface.target = "_blank";
       surface.rel = "noopener noreferrer";
-      surface.setAttribute("aria-label", `${project.title} — ${project.linkLabel || "프로젝트 보기"} (새 탭)`);
+      surface.setAttribute("aria-label", `${project.title} — ${project.linkLabel || "프로젝트 보기"} ${t("(새 탭)")}`);
     }
 
     const tone = tones.has(project.tone) ? project.tone : "sand";
@@ -194,11 +195,11 @@
       ]) {
         const actionUrl = destination(value);
         if (!actionUrl) continue;
-        const link = node("a", "project-resource-link", `${label} ↗`);
+        const link = node("a", "project-resource-link", `${t(label)} ↗`);
         link.href = actionUrl;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.setAttribute("aria-label", `${project.title} — ${label} (새 탭)`);
+        link.setAttribute("aria-label", `${project.title} — ${label} ${t("(새 탭)")}`);
         actions.append(link);
       }
     }
@@ -275,7 +276,7 @@
       link.href = mainUrl;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
-      link.setAttribute("aria-label", `${paper.title} (새 탭)`);
+      link.setAttribute("aria-label", `${paper.title} ${t("(새 탭)")}`);
       title.append(link);
     } else {
       title.textContent = paper.title;
@@ -296,11 +297,11 @@
       for (const [field, label] of [["href", paper.linkLabel || "논문"], ["pdf", "논문 PDF"], ["poster", "포스터 PDF"], ["code", "Code"], ["slides", "Slides"]]) {
         const url = destination(paper[field]);
         if (!url) continue;
-        const link = node("a", "publication-link", `${label} ↗`);
+        const link = node("a", "publication-link", `${t(label)} ↗`);
         link.href = url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.setAttribute("aria-label", `${paper.title} — ${label} (새 탭)`);
+        link.setAttribute("aria-label", `${paper.title} — ${label} ${t("(새 탭)")}`);
         links.append(link);
       }
     }

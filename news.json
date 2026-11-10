@@ -6,14 +6,24 @@
       "published": "2026-11-09",
       "title": "Claude로 전자기기 시제품 세 종류 설계",
       "summary": "Claude가 회로도와 PCB 배선, 케이스, 펌웨어를 설계했다. Diode 엔지니어가 조립한 시제품 세 종류는 회로 수정 없이 작동했다. 복잡한 배선에는 Claude가 직접 작성한 경로 탐색 도구를 사용했다.",
-      "url": "https://www.anthropic.com/research/claude-electronics-design"
+      "url": "https://www.anthropic.com/research/claude-electronics-design",
+      "en": {
+        "source": "Anthropic",
+        "title": "Claude designs three electronic prototypes",
+        "summary": "Claude designed the schematics, PCB routing, enclosures, and firmware. Three prototypes assembled by Diode engineers operated without circuit modifications. For complex routing, Claude used a pathfinding tool it had written."
+      }
     },
     {
       "source": "우아한형제들",
       "published": "2026-11-06",
       "title": "AI Gateway로 에이전트의 권한과 예산 관리",
       "summary": "AI Studio에서 프로젝트의 정책을 승인하고, LiteLLM 기반 게이트웨이에서 허용 모델·도구와 예산을 적용한다. 한 프로젝트에서 프롬프트 캐싱으로 요청당 비용은 84% 줄었고 평균 응답 시간은 0.79초에서 1.33초로 늘었다.",
-      "url": "https://techblog.woowahan.com/27890/"
+      "url": "https://techblog.woowahan.com/27890/",
+      "en": {
+        "source": "Woowa Brothers",
+        "title": "Managing agent permissions and budgets with an AI gateway",
+        "summary": "AI Studio approves project policies, while a LiteLLM-based gateway enforces permitted models, tools, and budgets. In one project, prompt caching reduced cost per request by 84%, while mean latency increased from 0.79 to 1.33 seconds."
+      }
     }
   ]
 }

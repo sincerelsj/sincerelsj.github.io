@@ -137,3 +137,9 @@ python -m http.server 4173 --bind 127.0.0.1
 - 한국연구재단: https://www.nrf.re.kr/resources/img/common/header/logo.svg
 - 문화체육관광부: https://www.mcst.go.kr/site/images/common/mcst_logo.svg
 - 한국콘텐츠진흥원: https://www.kocca.kr/images/homepage/www/kocca/common/logo_new.svg
+
+## 한국어 / English
+
+상단 버튼으로 언어를 전환합니다. URL의 `?lang=en` 또는 `?lang=ko`가 저장된 언어보다 우선하며, 버튼 선택은 브라우저에 저장됩니다. 한국어 내용을 수정하거나 추가하면 `assets/translations.js`의 대응 영어 문장도 수정하세요. 뉴스의 영어 제목·요약은 `news.json` 각 항목의 `en`에 입력합니다. 영어 번역이 없는 새 뉴스는 원문으로 표시합니다. 한국어 논문 제목의 영어판은 포트폴리오용 번역으로 표시하며 저자명은 원문 표기를 따릅니다.
+
+한국언론진흥재단 로고 원본: https://www.kpf.or.kr/images/front/logo.png

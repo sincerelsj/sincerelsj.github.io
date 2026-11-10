@@ -85,6 +85,7 @@ window.PROJECTS = [
       { title: "2025 신문산업실태조사", detail: "생성형 AI 활용 방안 자문" },
       { title: "2026 신문산업실태조사", detail: "AI 에이전트 활용 방안 자문" }
     ],
+    sponsors: [{ name: "한국언론진흥재단", logo: "assets/images/organizations/kpf.png" }],
     organization: "한국언론진흥재단",
     category: "DATA & AI",
     thumbnail: "assets/images/presspatrol-banner.svg",

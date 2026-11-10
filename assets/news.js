@@ -1,14 +1,15 @@
 (() => {
+  const { language, text: t } = window.LOCALE;
   const list = document.querySelector('#news-list');
   const edition = document.querySelector('#news-edition');
   const status = document.querySelector('#news-status');
-  const dateFormat = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeZone: 'Asia/Seoul' });
+  const dateFormat = new Intl.DateTimeFormat(language === 'en' ? 'en-GB' : 'ko-KR', { dateStyle: 'medium', timeZone: 'Asia/Seoul' });
   const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 
   function element(tag, className, text) {
     const node = document.createElement(tag);
     node.className = className;
-    node.textContent = text;
+    node.textContent = t(text);
     return node;
   }
 
@@ -19,6 +20,8 @@
   }
 
   function newsCard(item) {
+    const translated = language === "en" && item.en;
+    if (translated) item = { ...item, ...item.en };
     const sourceUrl = new URL(item.url);
     if (sourceUrl.protocol !== 'https:') throw new Error('Invalid source URL');
     for (const key of ['source', 'title', 'summary']) {
@@ -26,6 +29,7 @@
     }
 
     const article = element('article', 'news-card', '');
+    article.lang = translated ? 'en' : 'ko';
     const meta = element('p', 'news-meta', '');
     const published = element('time', '', dateLabel(item.published));
     published.dateTime = item.published;
@@ -47,12 +51,12 @@
       const cards = data.items.map(newsCard);
       list.replaceChildren(...cards);
       edition.dateTime = data.edition;
-      edition.textContent = `${label} 브리핑`;
+      edition.textContent = t(`${label} 브리핑`);
       edition.hidden = false;
       status.hidden = cards.length > 0;
-      status.textContent = cards.length ? '' : '이번 브리핑에는 게시할 새 소식이 없습니다.';
+      status.textContent = cards.length ? '' : t('이번 브리핑에는 게시할 새 소식이 없습니다.');
     } catch {
-      status.textContent = '브리핑을 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.';
+      status.textContent = t('브리핑을 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.');
     }
   }
 

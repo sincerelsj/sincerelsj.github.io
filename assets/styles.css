@@ -260,3 +260,15 @@ html{scroll-padding-top:calc(var(--header-current-size,var(--header-expanded-siz
 .sponsor-logo{display:block;max-width:100%;width:auto;height:32px;object-fit:contain;object-position:left center}
 .sponsor-name{font-size:13px;font-weight:650;color:#35566c}
 .publications-section + .news-section{margin-top:40px}
+
+.language-switch{display:flex;flex-shrink:0;padding:3px;border:1px solid #ccd6c6;border-radius:999px;background:#eef1e8;gap:2px}
+.language-switch button{border:0;border-radius:999px;padding:7px 10px;background:transparent;color:#5c6c52;font:inherit;font-size:11px;cursor:pointer;white-space:nowrap}
+.language-switch button[aria-pressed="true"]{background:#426b4a;color:#fff}
+.language-switch button:focus-visible{outline:2px solid #35566c;outline-offset:2px}
+html[lang="en"] .card-description{word-break:normal;line-height:1.75}
+html[lang="en"] .card-title{font-size:21px;letter-spacing:-.4px}
+html[lang="en"] .profile-affiliation{white-space:pre-line;font-size:13px}
+html[lang="en"] .project-resource-link{font-size:10px;overflow-wrap:anywhere}
+html[lang="en"] .project-organization{font-size:12px}
+@media(max-width:1100px){.header-bar .site-header{gap:12px}.header-bar nav{gap:14px}.header-motto{display:none}}
+@media(max-width:700px){.language-switch{margin-left:auto}.language-switch button{font-size:10px;padding:6px 8px}.header-bar nav{display:none}}
