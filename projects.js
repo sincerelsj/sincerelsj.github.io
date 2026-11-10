@@ -34,8 +34,8 @@ window.PROJECTS = [
     thumbnail: "",
     thumbnailFit: "contain",
     thumbnailAlt: "",
-    href: "",
-    linkLabel: "프로젝트 보기",
+    href: "http://203.253.84.41:38002/demo",
+    linkLabel: "XR 데모 체험하기",
     placeholder: false,
     status: "연구 참여",
     tone: "sand"
