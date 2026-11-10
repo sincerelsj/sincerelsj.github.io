@@ -1,28 +1,52 @@
 {
-  "edition": "2026-11-10",
+  "edition": "2026-11-11",
   "items": [
     {
-      "source": "Anthropic",
-      "published": "2026-11-09",
-      "title": "Claude로 전자기기 시제품 세 종류 설계",
-      "summary": "Claude가 회로도와 PCB 배선, 케이스, 펌웨어를 설계했다. Diode 엔지니어가 조립한 시제품 세 종류는 회로 수정 없이 작동했다. 복잡한 배선에는 Claude가 직접 작성한 경로 탐색 도구를 사용했다.",
-      "url": "https://www.anthropic.com/research/claude-electronics-design",
+      "source": "Google DeepMind",
+      "published": "2026-11-10",
+      "title": "AlphaProof Code로 Signal 암호화 구현 정형 검증",
+      "summary": "전문가가 검토한 명세를 바탕으로 Gemini 에이전트가 증명을 생성하고 Lean이 검증했다. 검증 범위는 특정 빌드의 핵심 보안 속성과 명세의 가정에 한정된다.",
+      "url": "https://deepmind.google/blog/introducing-alphaproof-code/",
       "en": {
-        "source": "Anthropic",
-        "title": "Claude designs three electronic prototypes",
-        "summary": "Claude designed the schematics, PCB routing, enclosures, and firmware. Three prototypes assembled by Diode engineers operated without circuit modifications. For complex routing, Claude used a pathfinding tool it had written."
+        "source": "Google DeepMind",
+        "title": "AlphaProof Code formally verifies Signal’s cryptographic implementation",
+        "summary": "Gemini agents generated proofs from specifications reviewed by experts, and Lean checked them. The guarantees cover key security properties of a specific build under the assumptions of the specifications."
       }
     },
     {
-      "source": "우아한형제들",
-      "published": "2026-11-06",
-      "title": "AI Gateway로 에이전트의 권한과 예산 관리",
-      "summary": "AI Studio에서 프로젝트의 정책을 승인하고, LiteLLM 기반 게이트웨이에서 허용 모델·도구와 예산을 적용한다. 한 프로젝트에서 프롬프트 캐싱으로 요청당 비용은 84% 줄었고 평균 응답 시간은 0.79초에서 1.33초로 늘었다.",
-      "url": "https://techblog.woowahan.com/27890/",
+      "source": "토스",
+      "published": "2026-11-10",
+      "title": "망분리 환경에서 에이전트 실행을 격리하고 세션을 이어가는 방법",
+      "summary": "토스는 Kubernetes 작업 공간에서 OpenSandbox와 bubblewrap으로 에이전트의 파일 및 네트워크 접근을 제한했다. 작업 파일과 세션 상태를 보존해 실행 환경이 바뀌어도 같은 하네스로 작업을 이어갈 수 있게 했다.",
+      "url": "https://toss.tech/article/agent-platform-foundation",
       "en": {
-        "source": "Woowa Brothers",
-        "title": "Managing agent permissions and budgets with an AI gateway",
-        "summary": "AI Studio approves project policies, while a LiteLLM-based gateway enforces permitted models, tools, and budgets. In one project, prompt caching reduced cost per request by 84%, while mean latency increased from 0.79 to 1.33 seconds."
+        "source": "Toss",
+        "title": "Isolating agent execution while preserving sessions on a segmented network",
+        "summary": "Toss uses OpenSandbox and bubblewrap to restrict agents’ file and network access in Kubernetes workspaces. It preserves work files and session state so the same harness can resume after the execution environment changes."
+      }
+    },
+    {
+      "source": "Anthropic Alignment Science",
+      "published": "2026-11-10",
+      "title": "정상 데이터가 미세조정 백도어를 강화한 실험",
+      "summary": "통제된 Qwen3-8B 실험에서 오염 예시의 80%를 정상 예시로 교체하자 특정 프롬프트에서 비정렬 응답률이 7%에서 16%로 올랐다. 일반 어시스턴트 프롬프트에서의 비정렬 응답률은 그대로였다.",
+      "url": "https://alignment.anthropic.com/2026/homeopathic-learning/",
+      "en": {
+        "source": "Anthropic Alignment Science",
+        "title": "Clean examples strengthened a fine-tuning backdoor in a controlled experiment",
+        "summary": "In a controlled Qwen3-8B experiment, replacing 80% of poisoned examples with clean examples raised the misalignment rate from 7% to 16% under a specific prompt. The misalignment rate under the standard assistant prompt stayed the same."
+      }
+    },
+    {
+      "source": "컬리",
+      "published": "2026-11-09",
+      "title": "화면 지도로 웹 회귀 테스트의 빈 곳 찾기",
+      "summary": "컬리는 프론트엔드 저장소 3곳에서 화면 경로 467개를 찾고 담당자가 진입 경로와 구현 범위를 검토했다. 테스트 114개를 추가하고, 화면 요소를 숨기거나 응답을 지연시켜 테스트가 실제 결함을 감지하는지 확인했다.",
+      "url": "https://helloworld.kurly.com/blog/web-e2e-coverage-map",
+      "en": {
+        "source": "Kurly",
+        "title": "Mapping web screens to find gaps in regression tests",
+        "summary": "Kurly identified 467 routes across three frontend repositories, and staff reviewed access paths and implementation scope. The team added 114 tests and hid elements or delayed responses to check whether the tests detected faults."
       }
     }
   ]
