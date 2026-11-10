@@ -57,6 +57,8 @@
       status.textContent = cards.length ? '' : t('이번 브리핑에는 게시할 새 소식이 없습니다.');
     } catch {
       status.textContent = t('브리핑을 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.');
+    } finally {
+      window.dispatchEvent(new Event('portfolio-news-ready'));
     }
   }
 

@@ -272,3 +272,17 @@ html[lang="en"] .project-resource-link{font-size:10px;overflow-wrap:anywhere}
 html[lang="en"] .project-organization{font-size:12px}
 @media(max-width:1100px){.header-bar .site-header{gap:12px}.header-bar nav{gap:14px}.header-motto{display:none}}
 @media(max-width:700px){.language-switch{margin-left:auto}.language-switch button{font-size:10px;padding:6px 8px}.header-bar nav{display:none}}
+
+.project-card.has-activities .card-surface{border-radius:13px 13px 0 0;flex:0 0 auto}
+.project-card.has-video.has-activities .card-surface{border-radius:0}
+.project-card.has-activities .card-surface:hover{transform:none}
+.project-activities{padding:18px;border:1px solid #dee2d8;border-top:0;border-radius:0 0 13px 13px;background:#eef1e9;flex:1}
+.activities-heading{font-size:13px;color:#48613c;margin:0 0 12px;font-weight:700;letter-spacing:.3px}
+.activity-card{padding:16px;background:#fffefb;border:1px solid #dce3d5;border-radius:9px}
+.activity-card+.activity-card{margin-top:12px}
+.activity-card .publication-meta{flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.activity-title{font-size:15px;line-height:1.55;margin:0;color:#26372b;overflow-wrap:anywhere}
+.activity-date{font-size:10px;color:#7b8672}
+.activity-summary{font-size:12px;color:#697365;line-height:1.75;margin:12px 0}
+.activity-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.activity-card .publication-authors{font-size:11px}

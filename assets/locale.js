@@ -1,6 +1,42 @@
 "use strict";
 (() => {
   const url = new URL(window.location.href);
+  const positionKey = "portfolio-language-position";
+  let pendingPosition;
+  try {
+    const stored = JSON.parse(sessionStorage.getItem(positionKey) || "null");
+    sessionStorage.removeItem(positionKey);
+    if (stored?.url === url.href) pendingPosition = stored;
+  } catch {}
+  if (pendingPosition) history.scrollRestoration = "manual";
+
+  function saveReadingPosition(nextUrl) {
+    const sections = [...document.querySelectorAll(".personal-hero, main > section")];
+    const section = sections.filter(element => element.getBoundingClientRect().top <= 120).pop();
+    const hash = nextUrl.hash;
+    nextUrl.hash = "";
+    try {
+      sessionStorage.setItem(positionKey, JSON.stringify({
+        url: nextUrl.href,
+        hash,
+        section: section?.id || "top",
+        offset: section?.id ? window.scrollY - (section.getBoundingClientRect().top + window.scrollY) : window.scrollY
+      }));
+    } catch {}
+  }
+
+  function restoreReadingPosition() {
+    if (!pendingPosition) return;
+    const section = document.getElementById(pendingPosition.section);
+    const top = pendingPosition.section === "top" ? 0 : section.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: Math.max(0, top + pendingPosition.offset), behavior: "instant" });
+  }
+
+  function finishPositionRestore() {
+    pendingPosition = null;
+    history.scrollRestoration = "auto";
+  }
+
   let saved;
   try { saved = localStorage.getItem("portfolio-language"); } catch {}
   const requested = url.searchParams.get("lang");
@@ -38,6 +74,16 @@
   window.LOCALE = { language, text, translateData, translatePage };
   document.addEventListener("DOMContentLoaded", () => {
     translatePage();
+    if (pendingPosition) {
+      // Restore without fragment navigation, which otherwise jumps to an old section.
+      history.replaceState(history.state, "", url.href + pendingPosition.hash);
+      restoreReadingPosition();
+      window.addEventListener("load", restoreReadingPosition, { once: true });
+      window.addEventListener("portfolio-news-ready", restoreReadingPosition, { once: true });
+      for (const event of ["wheel", "touchstart", "pointerdown", "keydown"]) {
+        window.addEventListener(event, finishPositionRestore, { once: true, passive: true });
+      }
+    }
     document.querySelectorAll("[data-language]").forEach(button => {
       button.setAttribute("aria-pressed", String(button.dataset.language === language));
       button.addEventListener("click", () => {
@@ -46,6 +92,7 @@
         if (next === language) return;
         const nextUrl = new URL(window.location.href);
         nextUrl.searchParams.set("lang", next);
+        saveReadingPosition(nextUrl);
         window.location.assign(nextUrl.href);
       });
     });

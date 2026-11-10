@@ -74,6 +74,44 @@
     document.getElementById("portrait-frame").append(photo);
   }
 
+  function renderActivity(activity) {
+    const publication = (window.PUBLICATIONS || []).find(paper => paper.id === activity.publicationId);
+    const entry = { ...publication, ...activity };
+    const card = node("article", "activity-card");
+    const meta = node("div", "publication-meta");
+    meta.append(node("span", "publication-type", entry.type));
+    if (entry.status) meta.append(node("span", "publication-status", entry.status));
+    const date = calendarDate(entry.date);
+    if (date) {
+      const time = node("time", "activity-date", date.text);
+      time.dateTime = date.raw;
+      meta.append(time);
+    }
+    card.append(meta, node("h5", "activity-title", entry.title));
+    if (entry.authors) {
+      const authors = node("p", "publication-authors");
+      for (const part of entry.authors.split(/(Seungju Lee|이승주)/gi)) {
+        authors.append(/^(Seungju Lee|이승주)$/i.test(part) ? node("strong", "", part) : document.createTextNode(part));
+      }
+      card.append(authors);
+    }
+    if (entry.venue) card.append(node("p", "publication-venue", entry.venue));
+    if (entry.summary) card.append(node("p", "activity-summary", entry.summary));
+    const links = node("div", "activity-links");
+    for (const [field, label] of [["href", entry.linkLabel || "논문"], ["pdf", "논문 PDF"], ["poster", "포스터 PDF"], ["code", "GitHub 코드"]]) {
+      const url = destination(entry[field]);
+      if (!url) continue;
+      const link = node("a", "publication-link", `${t(label)} ↗`);
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", `${entry.title} — ${t(label)} ${t("(새 탭)")}`);
+      links.append(link);
+    }
+    card.append(links);
+    return card;
+  }
+
   function renderProjectCard(project, index = 0) {
     const url = destination(project.href);
     const available = !project.placeholder;
@@ -152,15 +190,6 @@
     }
     meta.append(dateLabel);
     body.append(meta, node("h3", "card-title", project.title), node("p", "card-subtitle", project.subtitle), node("p", "card-description", project.description));
-    if (project.editions?.length) {
-      const editions = node("ul", "project-editions");
-      for (const edition of project.editions) {
-        const item = node("li", "project-edition");
-        item.append(node("strong", "", edition.title), node("span", "", edition.detail));
-        editions.append(item);
-      }
-      body.append(editions);
-    }
     if (project.sponsors?.length) {
       const sponsors = node("div", "project-sponsors");
       sponsors.append(node("p", "sponsor-label", "연구 지원 기관"));
@@ -186,6 +215,14 @@
     body.append(footer);
     surface.append(body);
     article.append(surface);
+    if (project.activities?.length) {
+      const activities = node("section", "project-activities");
+      activities.setAttribute("aria-label", t("활동"));
+      activities.append(node("h4", "activities-heading", "활동"));
+      for (const activity of project.activities) activities.append(renderActivity(activity));
+      article.classList.add("has-activities");
+      article.append(activities);
+    }
     const actions = node("div", "project-links");
     if (available) {
       for (const [value, label] of [

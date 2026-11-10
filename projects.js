@@ -31,8 +31,9 @@ window.PROJECTS = [
     title: "AI 에이전트 기반 사용성 평가",
     subtitle: "AI Agents & Usability Evaluation",
     description: "시각-운동 행동 기반 페르소나와 AI 에이전트를 활용해 사용성을 평가합니다. 에이전트와 인간의 정합성을 검증하는 실험 설계·수행에 참여합니다.",
-    editions: [
-      { title: "Task Complexity · HAI 2026", detail: "과제 복잡도에 따른 AI 에이전트의 정보 탐색 패턴 분석" }
+    activities: [
+      { publicationId: "hai-2026-task-complexity", summary: "과제 복잡도에 따른 AI 에이전트의 정보 탐색 패턴 분석" },
+      { type: "EXPERIMENT", title: "Task Complexity 실험", summary: "아파트 선택 과제의 조건을 선택하고 정보 탐색 과정을 직접 체험할 수 있습니다.", href: window.CONFERENCE_EXPERIMENT.href, linkLabel: "실험 화면 열기" }
     ],
     sponsors: [{ name: "한국연구재단", logo: "assets/images/organizations/nrf.svg" }],
     organization: "한국외국어대학교 연구산학협력단",
@@ -42,9 +43,6 @@ window.PROJECTS = [
     thumbnailAlt: "Task-Complexity의 에이전트 정보 탐색 실험 개요",
     href: "https://github.com/sincerelsj/Task-Complexity",
     linkLabel: "GitHub에서 보기",
-    pdf: "assets/papers/agent-usability-poster.pdf",
-    pdfLabel: "HAI 포스터 PDF",
-    experiment: window.CONFERENCE_EXPERIMENT.href,
     placeholder: false,
     status: "연구 참여",
     tone: "blue"
@@ -57,6 +55,9 @@ window.PROJECTS = [
     title: "멀티모달 XR 사용자 경험 평가",
     subtitle: "Multimodal XR UX Evaluation",
     description: "XR 공간 반응형 콘텐츠 최적화를 위한 멀티모달 UX 평가 플랫폼 기술 개발. 멀티모달 데이터 처리 파이프라인 구축 및 UX 평가 예측 시스템 개발에 참여합니다.",
+    activities: [
+      { publicationId: "vr-ux-transformers", summary: "온라인 리뷰와 트랜스포머 모델을 활용해 VR 게임의 사용자 경험 차원과 경험 수준을 분석한 연구입니다." }
+    ],
     sponsors: [
       { name: "문화체육관광부", logo: "assets/images/organizations/mcst.svg" },
       { name: "한국콘텐츠진흥원", logo: "assets/images/organizations/kocca.svg" }
@@ -81,9 +82,9 @@ window.PROJECTS = [
     title: "미디어 산업 실태조사",
     subtitle: "Media Industry Surveys",
     description: "2025·2026 신문산업실태조사에서 선형회귀·머신러닝 기반 무응답 추정과 AI 활용 방안 자문에 참여합니다.",
-    editions: [
-      { title: "2025 신문산업실태조사", detail: "생성형 AI 활용 방안 자문" },
-      { title: "2026 신문산업실태조사", detail: "AI 에이전트 활용 방안 자문" }
+    activities: [
+      { type: "SURVEY", title: "2025 신문산업실태조사", date: "2025", summary: "선형회귀·머신러닝 기반 무응답 추정 및 생성형 AI 활용 방안 자문", href: "https://github.com/sincerelsj/presspatrol", linkLabel: "GitHub에서 보기" },
+      { type: "SURVEY", title: "2026 신문산업실태조사", date: "2026", summary: "선형회귀·머신러닝 기반 무응답 추정 및 AI 에이전트 활용 방안 자문", href: "https://github.com/sincerelsj/presspatrol", linkLabel: "GitHub에서 보기" }
     ],
     sponsors: [{ name: "한국언론진흥재단", logo: "assets/images/organizations/kpf.png" }],
     organization: "한국언론진흥재단",

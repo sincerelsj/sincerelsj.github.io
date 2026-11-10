@@ -48,7 +48,7 @@
 
 AI 에이전트 기반 사용성 평가 카드에서 Task Complexity 실험을 열 수 있습니다. 주소가 바뀌면 `projects.js`의 `CONFERENCE_EXPERIMENT.href`와 `index.html`의 `noscript` 링크를 바꾸세요. 한국시간 2026-11-16 00:00부터 2026-11-20 00:00 전까지는 실험 소개가 프로필 위에도 표시됩니다.
 
-신문산업실태조사의 연도별 내역은 `press-industry-surveys` 항목의 `editions`에 있습니다. 2026 잡지 조사를 같은 카드에 추가할 경우 여기에 `{ title, detail }` 항목을 한 줄 더 넣으면 됩니다.
+신문산업실태조사의 연도별 내역은 `press-industry-surveys` 항목의 `activities`에 있습니다. 2026 잡지 조사를 같은 카드에 추가할 경우 여기에 `{ type, title, summary, href }` 항목을 한 줄 더 넣으면 됩니다.
 
 ### 프로젝트 PDF 추가 및 교체
 
@@ -143,3 +143,5 @@ python -m http.server 4173 --bind 127.0.0.1
 상단 버튼으로 언어를 전환합니다. URL의 `?lang=en` 또는 `?lang=ko`가 저장된 언어보다 우선하며, 버튼 선택은 브라우저에 저장됩니다. 한국어 내용을 수정하거나 추가하면 `assets/translations.js`의 대응 영어 문장도 수정하세요. 뉴스의 영어 제목·요약은 `news.json` 각 항목의 `en`에 입력합니다. 영어 번역이 없는 새 뉴스는 원문으로 표시합니다. 한국어 논문 제목의 영어판은 포트폴리오용 번역으로 표시하며 저자명은 원문 표기를 따릅니다.
 
 한국언론진흥재단 로고 원본: https://www.kpf.or.kr/images/front/logo.png
+
+프로젝트 활동의 `publicationId`를 `publications.js`의 논문 ID에 연결하면 제목·저자·게재 상태와 링크가 공유됩니다. 각 활동의 `summary`로 프로젝트 안에서 연구 내용을 소개합니다.
