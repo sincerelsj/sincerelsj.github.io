@@ -184,10 +184,16 @@ html{scroll-padding-top:calc(var(--header-current-size,var(--header-expanded-siz
 }
 @media(prefers-reduced-motion:reduce){.header-motto{transform:none}}
 
-/* Separate PDF action alongside the card's main destination. */
-.project-card.has-pdf{position:relative;transition:transform .2s ease}
-.project-card.has-pdf:hover{transform:translateY(-4px)}
-.project-card.has-pdf:hover .card-surface{transform:none;box-shadow:0 12px 28px #34442d0c;border-color:#bdccb4}
-.project-pdf-link{position:absolute;right:58px;bottom:13px;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:6px 10px;border:1px solid #ccd9bf;border-radius:20px;background:#edf2e5;color:#4a653d;font-size:10px;font-weight:600;line-height:1.5;white-space:nowrap}
-.project-pdf-link:hover{background:#426b4a;border-color:#426b4a;color:#fff}
-@media(max-width:700px){.project-pdf-link{bottom:14px;right:60px}}
+/* Project media and separate, accessible document actions. */
+.thumbnail-image{padding:18px;background:#f4f3ed}
+.thumbnail-number{background:#fffefbe8;border-radius:5px;padding:4px 6px;top:12px;left:12px}
+.project-card{display:flex;flex-direction:column}
+.project-card .card-surface{flex:1;height:auto}
+.project-card.has-pdf .card-surface{border-radius:13px 13px 0 0}
+.project-pdf-link{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:10px 22px;border:1px solid #dee2d8;border-top:0;border-radius:0 0 13px 13px;background:#edf2e5;color:#4a653d;font-size:11px;font-weight:600}
+.project-pdf-link:hover{background:#dfe9d7}
+.project-card.has-pdf .card-surface:hover{transform:none}
+.publication-pdf-pending{font-size:10px;color:#858b80;padding:7px 12px;border:1px dashed #d6dfcb;border-radius:20px;white-space:nowrap}
+.publication-links{max-width:210px;padding-top:0;align-content:start}
+.card-meta{flex-wrap:wrap;row-gap:7px}
+@media(max-width:700px){.publication-links{max-width:none}.thumbnail-image{padding:20px}}

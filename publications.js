@@ -47,7 +47,8 @@ window.PUBLICATIONS = [
     href: "https://doi.org/10.1145/3841580.3845692",
     linkLabel: "DOI",
     pdf: "",
-    code: "",
+    poster: "assets/papers/agent-usability-poster.pdf",
+    code: "https://github.com/sincerelsj/Task-Complexity",
     slides: "",
     placeholder: false
   },

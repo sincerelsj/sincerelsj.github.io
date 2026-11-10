@@ -119,3 +119,14 @@ python -m http.server 4173 --bind 127.0.0.1
 - Branch: **main**, 폴더: **/(root)**
 
 저장하면 `main` 브랜치에 올린 수정 사항이 GitHub Pages로 배포됩니다. 공개 페이지에는 이 폴더의 파일만 올립니다. 실험 기록과 서버 설정은 포함하지 않습니다.
+
+## 대표 이미지와 논문 PDF 교체
+
+- 프로젝트: `assets/images/`에 이미지를 넣고 `projects.js`의 해당 항목 `thumbnail`, `thumbnailAlt`를 수정합니다. `thumbnailFit: "contain"`은 그림 전체를 표시하며, `"cover"`는 사진을 카드에 꽉 채웁니다. 빈 경로에는 이미지 자리 표시가 남습니다.
+- 논문: `assets/papers/`에 파일을 넣고 `publications.js`의 해당 항목 `pdf`에 경로를 적습니다. 비어 있으면 `PDF 미등록`, 경로가 있으면 `논문 PDF` 버튼이 표시됩니다.
+- 포스터는 `poster`, 발표 자료는 `slides`로 별도 등록합니다. HAI 자료는 현재 포스터 PDF이며 논문 원문 PDF와 구분했습니다.
+- 파일 교체 후 커밋·푸시하면 GitHub Pages에 반영됩니다. 브라우저에서 직접 업로드하는 관리자 화면은 없습니다.
+
+대표 이미지 출처 (2026-11-10 저장소 README 기준):
+- `task-complexity-overview.png`: https://github.com/sincerelsj/Task-Complexity/blob/main/assets/experiment-overview-handdrawn.png
+- `presspatrol-banner.svg`: https://github.com/sincerelsj/presspatrol/blob/main/assets/banner.svg

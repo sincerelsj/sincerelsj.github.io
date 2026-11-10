@@ -90,11 +90,12 @@
     const thumbnail = node("div", `thumbnail tone-${tone}`);
     const fallback = node("div", "thumbnail-placeholder");
     fallback.setAttribute("aria-hidden", "true");
-    fallback.append(node("span", "placeholder-corner corner-tl"), node("span", "placeholder-corner corner-tr"), node("span", "placeholder-corner corner-bl"), node("span", "placeholder-corner corner-br"), node("span", "placeholder-plus", "+"), node("span", "placeholder-caption", "A NEW PERSPECTIVE"));
+    fallback.append(node("span", "placeholder-corner corner-tl"), node("span", "placeholder-corner corner-tr"), node("span", "placeholder-corner corner-bl"), node("span", "placeholder-corner corner-br"), node("span", "placeholder-plus", "+"), node("span", "placeholder-caption", available ? "PROJECT IMAGE" : "COMING SOON"));
     thumbnail.append(fallback);
 
     if (project.thumbnail) {
       const image = node("img", "thumbnail-image");
+      image.style.objectFit = project.thumbnailFit === "contain" ? "contain" : "cover";
       image.src = project.thumbnail;
       image.alt = project.thumbnailAlt || project.title;
       image.loading = index === 0 ? "eager" : "lazy";
@@ -212,7 +213,7 @@
 
     const links = node("div", "publication-links");
     if (available) {
-      for (const [field, label] of [["href", paper.linkLabel || "논문"], ["pdf", "PDF"], ["code", "Code"], ["slides", "Slides"]]) {
+      for (const [field, label] of [["href", paper.linkLabel || "논문"], ["pdf", "논문 PDF"], ["poster", "포스터 PDF"], ["code", "Code"], ["slides", "Slides"]]) {
         const url = destination(paper[field]);
         if (!url) continue;
         const link = node("a", "publication-link", `${label} ↗`);
@@ -222,6 +223,11 @@
         link.setAttribute("aria-label", `${paper.title} — ${label} (새 탭)`);
         links.append(link);
       }
+    }
+    if (available && !destination(paper.pdf)) {
+      const pending = node("span", "publication-pdf-pending", "PDF 미등록");
+      pending.title = "논문 PDF가 등록되면 이 자리에 링크가 표시됩니다.";
+      links.append(pending);
     }
     row.append(dateBlock, content, links);
     publicationList.append(row);
