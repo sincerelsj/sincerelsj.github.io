@@ -89,32 +89,47 @@
 
     const tone = tones.has(project.tone) ? project.tone : "sand";
     const thumbnail = node("div", `thumbnail tone-${tone}`);
-    const fallback = node("div", "thumbnail-placeholder");
-    fallback.setAttribute("aria-hidden", "true");
-    fallback.append(node("span", "placeholder-corner corner-tl"), node("span", "placeholder-corner corner-tr"), node("span", "placeholder-corner corner-bl"), node("span", "placeholder-corner corner-br"), node("span", "placeholder-plus", "+"), node("span", "placeholder-caption", available ? "PROJECT IMAGE" : "COMING SOON"));
-    thumbnail.append(fallback);
+    const videoUrl = available ? destination(project.videoEmbed) : null;
+    if (videoUrl) {
+      const player = node("iframe", "thumbnail-video");
+      player.title = `${project.title} 데모 영상`;
+      player.loading = "lazy";
+      player.allow = "encrypted-media; picture-in-picture";
+      player.allowFullscreen = true;
+      player.referrerPolicy = "strict-origin-when-cross-origin";
+      player.src = videoUrl;
+      thumbnail.append(player);
+      article.classList.add("has-video");
+      article.append(thumbnail);
+    } else {
+      const fallback = node("div", "thumbnail-placeholder");
+      fallback.setAttribute("aria-hidden", "true");
+      fallback.append(node("span", "placeholder-corner corner-tl"), node("span", "placeholder-corner corner-tr"), node("span", "placeholder-corner corner-bl"), node("span", "placeholder-corner corner-br"), node("span", "placeholder-plus", "+"), node("span", "placeholder-caption", available ? "PROJECT IMAGE" : "COMING SOON"));
+      thumbnail.append(fallback);
 
-    if (project.thumbnail) {
-      const image = node("img", "thumbnail-image");
-      image.style.objectFit = project.thumbnailFit === "contain" ? "contain" : "cover";
-      image.src = project.thumbnail;
-      image.alt = project.thumbnailAlt || project.title;
-      image.loading = index === 0 ? "eager" : "lazy";
-      image.decoding = "async";
-      image.width = 720;
-      image.height = 450;
-      image.addEventListener("load", () => fallback.hidden = true);
-      image.addEventListener("error", () => image.remove(), { once: true });
-      thumbnail.append(image);
-    }
+      if (project.thumbnail) {
+        const image = node("img", "thumbnail-image");
+        image.style.objectFit = project.thumbnailFit === "contain" ? "contain" : "cover";
+        image.src = project.thumbnail;
+        image.alt = project.thumbnailAlt || project.title;
+        image.loading = index === 0 ? "eager" : "lazy";
+        image.decoding = "async";
+        image.width = 720;
+        image.height = 450;
+        image.addEventListener("load", () => fallback.hidden = true);
+        image.addEventListener("error", () => image.remove(), { once: true });
+        thumbnail.append(image);
+      }
 
-    const number = String(index + 1).padStart(2, "0");
-    thumbnail.append(node("span", "thumbnail-number", number));
-    if (clickable) {
-      const indicator = node("span", "thumbnail-indicator");
-      const destinationLabel = new URL(url).hostname === "github.com" ? "GITHUB" : "INTERACTIVE";
-      indicator.append(node("i", "status-dot"), document.createTextNode(destinationLabel));
-      thumbnail.append(indicator);
+      const number = String(index + 1).padStart(2, "0");
+      thumbnail.append(node("span", "thumbnail-number", number));
+      if (clickable) {
+        const indicator = node("span", "thumbnail-indicator");
+        const destinationLabel = new URL(url).hostname === "github.com" ? "GITHUB" : "INTERACTIVE";
+        indicator.append(node("i", "status-dot"), document.createTextNode(destinationLabel));
+        thumbnail.append(indicator);
+      }
+      surface.append(thumbnail);
     }
 
     const body = node("div", "card-body");
@@ -145,14 +160,13 @@
     arrow.setAttribute("aria-hidden", "true");
     footer.append(arrow);
     body.append(footer);
-    surface.append(thumbnail, body);
+    surface.append(body);
     article.append(surface);
     const actions = node("div", "project-links");
     if (available) {
       for (const [value, label] of [
         [project.pdf, project.pdfLabel || "PDF"],
-        [project.code, "GitHub 코드"],
-        [project.video, "데모 영상 보기"]
+        [project.code, "GitHub 코드"]
       ]) {
         const actionUrl = destination(value);
         if (!actionUrl) continue;

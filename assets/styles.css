@@ -189,6 +189,10 @@ html{scroll-padding-top:calc(var(--header-current-size,var(--header-expanded-siz
 .thumbnail-number{background:#fffefbe8;border-radius:5px;padding:4px 6px;top:12px;left:12px}
 .project-card{display:flex;flex-direction:column}
 .project-card .card-surface{flex:1;height:auto}
+.project-card.has-video .thumbnail{border:1px solid #dee2d8;border-bottom:0;border-radius:13px 13px 0 0;background:#111}
+.thumbnail-video{display:block;width:100%;height:100%;position:absolute;inset:0;border:0}
+.project-card.has-video .card-surface{border-radius:0 0 13px 13px}
+.project-card.has-video .card-surface:hover{transform:none}
 .project-card.has-resources .card-surface{border-radius:13px 13px 0 0}
 .project-links{display:flex;border:1px solid #dee2d8;border-top:0;border-radius:0 0 13px 13px;overflow:hidden;background:#edf2e5}
 .project-resource-link{display:flex;align-items:center;flex:1;min-height:44px;padding:10px 16px;color:#4a653d;font-size:11px;font-weight:600}
