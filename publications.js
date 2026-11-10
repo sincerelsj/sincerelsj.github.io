@@ -1,6 +1,5 @@
 // 2026-10-26 이력서를 바탕으로 정리했습니다.
-// status는 게재, 채택·발표 예정, 투고 상태를 구분합니다.
-// 이력서에 투고 원고의 저자 목록과 투고일이 없어 해당 값은 비워 두었습니다.
+// status는 게재와 채택·발표 예정 상태를 구분합니다.
 window.PUBLICATIONS = [
   {
     id: "vr-ux-transformers",
@@ -49,22 +48,6 @@ window.PUBLICATIONS = [
     pdf: "",
     poster: "assets/papers/agent-usability-poster.pdf",
     code: "https://github.com/sincerelsj/Task-Complexity",
-    slides: "",
-    placeholder: false
-  },
-  {
-    id: "digital-journalism-submission",
-    title: "Framing politicians through news photography: VLM and BERTopic analysis of a public political crisis",
-    authors: "",
-    venue: "Digital Journalism",
-    type: "MANUSCRIPT",
-    status: "투고 완료",
-    statusTone: "submitted",
-    note: "",
-    date: "",
-    href: "",
-    pdf: "",
-    code: "",
     slides: "",
     placeholder: false
   }

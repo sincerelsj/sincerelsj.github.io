@@ -34,6 +34,7 @@ window.PROJECTS = [
     editions: [
       { title: "Task Complexity · HAI 2026", detail: "과제 복잡도에 따른 AI 에이전트의 정보 탐색 패턴 분석" }
     ],
+    sponsors: [{ name: "한국연구재단", logo: "assets/images/organizations/nrf.svg" }],
     organization: "한국외국어대학교 연구산학협력단",
     category: "RESEARCH",
     thumbnail: "assets/images/task-complexity-overview.png",
@@ -56,6 +57,10 @@ window.PROJECTS = [
     title: "멀티모달 XR 사용자 경험 평가",
     subtitle: "Multimodal XR UX Evaluation",
     description: "XR 공간 반응형 콘텐츠 최적화를 위한 멀티모달 UX 평가 플랫폼 기술 개발. 멀티모달 데이터 처리 파이프라인 구축 및 UX 평가 예측 시스템 개발에 참여합니다.",
+    sponsors: [
+      { name: "문화체육관광부", logo: "assets/images/organizations/mcst.svg" },
+      { name: "한국콘텐츠진흥원", logo: "assets/images/organizations/kocca.svg" }
+    ],
     organization: "연세대학교 산학협력단",
     category: "RESEARCH",
     thumbnail: "",

@@ -160,6 +160,21 @@
       }
       body.append(editions);
     }
+    if (project.sponsors?.length) {
+      const sponsors = node("div", "project-sponsors");
+      sponsors.append(node("p", "sponsor-label", "연구 지원 기관"));
+      for (const sponsor of project.sponsors) {
+        const sponsorRow = node("div", "sponsor-row");
+        const logo = node("img", "sponsor-logo");
+        logo.src = sponsor.logo;
+        logo.alt = "";
+        logo.loading = "lazy";
+        logo.addEventListener("error", () => logo.remove(), { once: true });
+        sponsorRow.append(logo, node("span", "sponsor-name", sponsor.name));
+        sponsors.append(sponsorRow);
+      }
+      body.append(sponsors);
+    }
     if (project.organization) body.append(node("p", "project-organization", `과제 기관 · ${project.organization}`));
 
     const footer = node("div", "card-footer");

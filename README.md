@@ -71,7 +71,7 @@ PDF 버튼은 카드의 GitHub 링크와 독립적으로 동작합니다. PowerP
 
 ## 논문 추가
 
-`publications.js`에서 논문을 수정하거나 항목을 추가합니다. 현재는 제공된 2026-10-26 이력서를 바탕으로 게재 논문 2편, HAI 2026 포스터 1편, 투고 원고 1편을 등록했습니다. 포스터는 채택·발표 예정, 원고는 투고 완료 상태로 구분합니다. 이력서에 없는 투고 원고의 저자 목록과 투고일은 비워 두었습니다.
+`publications.js`에서 논문을 수정하거나 항목을 추가합니다. 현재는 제공된 2026-10-26 이력서를 바탕으로 게재 논문 2편과 HAI 2026 포스터 1편을 등록했습니다. 포스터는 채택·발표 예정 상태로 표시합니다.
 
 ```js
 {
@@ -132,3 +132,8 @@ python -m http.server 4173 --bind 127.0.0.1
 대표 이미지 출처 (2026-11-10 저장소 README 기준):
 - `task-complexity-overview.png`: https://github.com/sincerelsj/Task-Complexity/blob/main/assets/experiment-overview-handdrawn.png
 - `presspatrol-banner.svg`: https://github.com/sincerelsj/presspatrol/blob/main/assets/banner.svg
+
+기관 로고는 각 기관 공식 홈페이지의 원본을 사용합니다.
+- 한국연구재단: https://www.nrf.re.kr/resources/img/common/header/logo.svg
+- 문화체육관광부: https://www.mcst.go.kr/site/images/common/mcst_logo.svg
+- 한국콘텐츠진흥원: https://www.kocca.kr/images/homepage/www/kocca/common/logo_new.svg

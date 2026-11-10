@@ -201,7 +201,39 @@ html{scroll-padding-top:calc(var(--header-current-size,var(--header-expanded-siz
 .project-resource-link:focus-visible{outline-offset:-3px}
 .project-card.has-resources .card-surface:hover{transform:none}
 .project-card .card-description{flex:none;margin-bottom:12px}
-.project-card .project-organization{margin-top:auto;padding-top:12px}
+.project-card .project-organization{
+  margin: auto 0 18px;
+  padding: 11px 13px;
+  border-left: 3px solid #6b8ca3;
+  border-radius: 0 7px 7px 0;
+  background: #edf3f6;
+  color: #35566c;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+#awards-list .background-item{
+  padding: 20px;
+  border: 1px solid #ded0ab;
+  border-left: 4px solid #aa853f;
+  border-radius: 10px;
+  background: #f7f1e3;
+}
+#awards-list .background-period{
+  color: #82662f;
+  font-weight: 600;
+}
+#awards-list .background-title{
+  font-size: 19px;
+  font-weight: 700;
+  color: #725421;
+  line-height: 1.5;
+  margin-bottom: 9px;
+}
+#awards-list .background-detail{
+  color: #746449;
+  font-size: 12px;
+}
 .project-editions{display:grid;gap:8px;list-style:none;padding:0;margin:0 0 14px}
 .project-edition{display:grid;gap:2px;border-left:2px solid #d6dfcb;padding-left:9px;color:var(--muted);font-size:11px;line-height:1.5}
 .project-edition strong{color:var(--ink);font-weight:600}
@@ -218,3 +250,13 @@ html{scroll-padding-top:calc(var(--header-current-size,var(--header-expanded-siz
   .conference-feature .card-surface{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .conference-feature .thumbnail{aspect-ratio:auto;min-height:230px;border-bottom:0;border-right:1px solid #222b2508}
 }
+
+
+/* Institution names remain readable alongside the official marks. */
+.project-sponsors{margin-top:4px;margin-bottom:16px;padding:14px;background:#fff;border:1px solid #d9e3eb;border-radius:8px}
+.sponsor-label{margin:0 0 12px;font-size:11px;font-weight:600;color:#5a7489}
+.sponsor-row{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.sponsor-row+.sponsor-row{margin-top:14px}
+.sponsor-logo{display:block;max-width:100%;width:auto;height:32px;object-fit:contain;object-position:left center}
+.sponsor-name{font-size:13px;font-weight:650;color:#35566c}
+.publications-section + .news-section{margin-top:40px}

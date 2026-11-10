@@ -10,13 +10,13 @@
     <meta property="og:type" content="website">
     <title>seungju Lee — Projects & Publications</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./assets/styles.css?v=20261110-project-groups">
+    <link rel="stylesheet" href="./assets/styles.css?v=20261110-institutions">
     <link rel="stylesheet" href="./assets/news.css">
     <script src="./profile.js?v=20261110" defer></script>
-    <script src="./projects.js?v=20261110-project-groups" defer></script>
-    <script src="./publications.js?v=20261110" defer></script>
+    <script src="./projects.js?v=20261110-institutions" defer></script>
+    <script src="./publications.js?v=20261110-institutions" defer></script>
     <script src="./background.js" defer></script>
-    <script src="./assets/site.js?v=20261110-project-groups" defer></script>
+    <script src="./assets/site.js?v=20261110-institutions" defer></script>
     <script src="./assets/news.js" defer></script>
   </head>
   <body>
@@ -33,9 +33,9 @@
         <p class="header-motto" data-profile-motto aria-hidden="true">Projects, papers &amp; experiments.</p>
         <nav aria-label="주 메뉴">
           <a class="nav-link nav-about" href="#about">About</a>
-          <a class="nav-link" href="#news">News</a>
           <a class="nav-link" href="#projects">Projects</a>
           <a class="nav-link" href="#publications">Papers</a>
+          <a class="nav-link" href="#news">News</a>
           <a class="github-link" href="https://github.com/sincerelsj" target="_blank" rel="noopener noreferrer" aria-label="GitHub (새 탭)"><span class="github-text">GitHub</span> <span aria-hidden="true">↗</span></a>
         </nav>
             </div>
@@ -74,17 +74,6 @@
       </header>
 
       <main>
-        <section class="news-section" id="news" aria-labelledby="news-heading">
-          <div class="section-heading">
-            <div class="section-title"><h2 id="news-heading">AI Research News</h2></div>
-            <time class="news-edition" id="news-edition" hidden></time>
-          </div>
-          <p class="section-description">공식 연구·기술 블로그에서 고른 AI 연구와 엔지니어링 소식.</p>
-          <p class="news-status" id="news-status" role="status">브리핑을 불러오는 중입니다.</p>
-          <div class="news-grid" id="news-list"></div>
-          <noscript><p class="news-status"><a href="./news.json">브리핑 데이터 보기</a></p></noscript>
-        </section>
-
         <section class="projects-section" id="projects" aria-labelledby="projects-heading">
           <div class="section-heading">
             <div class="section-title"><h2 id="projects-heading">Projects</h2><span class="count" id="project-count" aria-label="공개 프로젝트 수">01</span></div>
@@ -100,9 +89,20 @@
             <div class="section-title"><h2 id="publications-heading">Publications</h2><span class="count" id="publication-count" aria-label="공개 논문 수">00</span></div>
             <span class="collection-note">Papers &amp; conference presentations.</span>
           </div>
-          <p class="section-description">게재 논문, 투고 원고와 학회 발표.</p>
+          <p class="section-description">게재 논문과 학회 발표.</p>
           <div class="publication-list" id="publication-list" aria-label="논문 목록"></div>
           <noscript><p>논문 목록을 보려면 JavaScript를 켜주세요.</p></noscript>
+        </section>
+
+        <section class="news-section" id="news" aria-labelledby="news-heading">
+          <div class="section-heading">
+            <div class="section-title"><h2 id="news-heading">AI Research News</h2></div>
+            <time class="news-edition" id="news-edition" hidden></time>
+          </div>
+          <p class="section-description">공식 연구·기술 블로그에서 고른 AI 연구와 엔지니어링 소식.</p>
+          <p class="news-status" id="news-status" role="status">브리핑을 불러오는 중입니다.</p>
+          <div class="news-grid" id="news-list"></div>
+          <noscript><p class="news-status"><a href="./news.json">브리핑 데이터 보기</a></p></noscript>
         </section>
 
         <section class="background-section" id="about" aria-labelledby="background-heading">
