@@ -37,6 +37,7 @@ window.PROJECTS = [
     thumbnailAlt: "",
     href: "http://203.253.84.41:38002/demo",
     linkLabel: "XR 데모 체험하기",
+    video: "https://youtu.be/PPGVysGNckg",
     placeholder: false,
     status: "연구 참여",
     tone: "sand"

@@ -149,7 +149,11 @@
     article.append(surface);
     const actions = node("div", "project-links");
     if (available) {
-      for (const [value, label] of [[project.pdf, project.pdfLabel || "PDF"], [project.code, "GitHub 코드"]]) {
+      for (const [value, label] of [
+        [project.pdf, project.pdfLabel || "PDF"],
+        [project.code, "GitHub 코드"],
+        [project.video, "데모 영상 보기"]
+      ]) {
         const actionUrl = destination(value);
         if (!actionUrl) continue;
         const link = node("a", "project-resource-link", `${label} ↗`);
