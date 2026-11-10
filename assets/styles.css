@@ -189,11 +189,23 @@ html{scroll-padding-top:calc(var(--header-current-size,var(--header-expanded-siz
 .thumbnail-number{background:#fffefbe8;border-radius:5px;padding:4px 6px;top:12px;left:12px}
 .project-card{display:flex;flex-direction:column}
 .project-card .card-surface{flex:1;height:auto}
-.project-card.has-pdf .card-surface{border-radius:13px 13px 0 0}
-.project-pdf-link{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:10px 22px;border:1px solid #dee2d8;border-top:0;border-radius:0 0 13px 13px;background:#edf2e5;color:#4a653d;font-size:11px;font-weight:600}
-.project-pdf-link:hover{background:#dfe9d7}
-.project-card.has-pdf .card-surface:hover{transform:none}
+.project-card.has-resources .card-surface{border-radius:13px 13px 0 0}
+.project-links{display:flex;border:1px solid #dee2d8;border-top:0;border-radius:0 0 13px 13px;overflow:hidden;background:#edf2e5}
+.project-resource-link{display:flex;align-items:center;flex:1;min-height:44px;padding:10px 16px;color:#4a653d;font-size:11px;font-weight:600}
+.project-resource-link+.project-resource-link{border-left:1px solid #dee2d8}
+.project-resource-link:hover{background:#dfe9d7}
+.project-resource-link:focus-visible{outline-offset:-3px}
+.project-card.has-resources .card-surface:hover{transform:none}
 .publication-pdf-pending{font-size:10px;color:#858b80;padding:7px 12px;border:1px dashed #d6dfcb;border-radius:20px;white-space:nowrap}
 .publication-links{max-width:210px;padding-top:0;align-content:start}
 .card-meta{flex-wrap:wrap;row-gap:7px}
 @media(max-width:700px){.publication-links{max-width:none}.thumbnail-image{padding:20px}}
+
+.conference-feature{margin-top:28px;scroll-margin-top:calc(var(--header-expanded-size) + 14px)}
+.conference-jump{margin-bottom:16px}
+.conference-jump[hidden]{display:none}
+.conference-feature .section-heading{margin-bottom:14px}
+@media(min-width:701px){
+  .conference-feature .card-surface{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .conference-feature .thumbnail{aspect-ratio:auto;min-height:230px;border-bottom:0;border-right:1px solid #222b2508}
+}

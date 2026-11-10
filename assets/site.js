@@ -73,6 +73,7 @@
     document.getElementById("portrait-frame").append(photo);
   }
 
+  let experimentCard;
   for (const [index, project] of projects.entries()) {
     const url = destination(project.href);
     const available = !project.placeholder;
@@ -146,22 +147,59 @@
     body.append(footer);
     surface.append(thumbnail, body);
     article.append(surface);
-    const pdfUrl = available ? destination(project.pdf) : null;
-    if (pdfUrl) {
-      article.classList.add("has-pdf");
-      // Sibling links keep the PDF independent of the whole-card GitHub link.
-      const pdfLink = node("a", "project-pdf-link", `${project.pdfLabel || "PDF"} ↗`);
-      pdfLink.href = pdfUrl;
-      pdfLink.target = "_blank";
-      pdfLink.rel = "noopener noreferrer";
-      pdfLink.setAttribute("aria-label", `${project.title} — ${project.pdfLabel || "PDF"} (새 탭)`);
-      article.append(pdfLink);
+    const actions = node("div", "project-links");
+    if (available) {
+      for (const [value, label] of [[project.pdf, project.pdfLabel || "PDF"], [project.code, "GitHub 코드"]]) {
+        const actionUrl = destination(value);
+        if (!actionUrl) continue;
+        const link = node("a", "project-resource-link", `${label} ↗`);
+        link.href = actionUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.setAttribute("aria-label", `${project.title} — ${label} (새 탭)`);
+        actions.append(link);
+      }
+    }
+    if (actions.childElementCount) {
+      article.classList.add("has-resources");
+      article.append(actions);
     }
     grid.append(article);
+    if (project.id === "decision-experiment" && clickable) experimentCard = article;
   }
 
   const count = projects.filter(project => !project.placeholder).length;
-  document.getElementById("project-count").textContent = String(count).padStart(2, "0");
+  const projectCount = document.getElementById("project-count");
+  projectCount.textContent = String(count).padStart(2, "0");
+
+  if (experimentCard) {
+    const feature = document.getElementById("conference-feature");
+    const originalNextCard = experimentCard.nextElementSibling;
+    const jump = document.getElementById("conference-jump");
+    // HAI 2026: show the experiment during November 16–19, Korea time.
+    const startsAt = Date.parse("2026-11-16T00:00:00+09:00");
+    const endsAt = Date.parse("2026-11-20T00:00:00+09:00");
+
+    function updateConferenceFeature() {
+      const now = Date.now();
+      const featured = now >= startsAt && now < endsAt;
+      if (featured) feature.append(experimentCard);
+      else if (experimentCard.parentElement === feature) grid.insertBefore(experimentCard, originalNextCard);
+      feature.hidden = !featured;
+      jump.hidden = !featured;
+      projectCount.textContent = String(count - Number(featured)).padStart(2, "0");
+
+      const nextChange = now < startsAt ? startsAt : endsAt;
+      if (now < nextChange) {
+        setTimeout(() => {
+          updateConferenceFeature();
+          scheduleHeader(true);
+        }, Math.min(nextChange - now, 2_147_483_647));
+      }
+    }
+
+    updateConferenceFeature();
+  }
 
   const publications = window.PUBLICATIONS || [];
   const publicationList = document.getElementById("publication-list");

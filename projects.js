@@ -16,8 +16,9 @@ window.PROJECTS = [
     thumbnail: "assets/images/task-complexity-overview.png",
     thumbnailFit: "contain",
     thumbnailAlt: "Task-Complexity 저장소의 아파트 선택 과제와 에이전트 정보 탐색 실험 개요",
-    href: "https://github.com/sincerelsj/Task-Complexity",
-    linkLabel: "GitHub에서 보기",
+    href: "http://203.253.84.41:38002/lsj/",
+    linkLabel: "실험 화면 열기",
+    code: "https://github.com/sincerelsj/Task-Complexity",
     placeholder: false,
     tone: "sage"
   },
