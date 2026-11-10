@@ -293,26 +293,31 @@ html[lang="en"] .project-organization{font-size:12px}
 #project-grid .project-organization{padding:10px 12px;margin:0 0 16px;border:0;border-radius:7px;font-size:12px;background:#edf2f4;line-height:1.65}
 #project-grid .card-footer{border-top:1px solid #e7ebe3;min-height:50px}
 #project-grid .card-action{font-size:11px}
-.project-activities{padding:16px 18px 18px;border:0;border-top:1px solid #e4e9df;background:#f6f7f2;flex:none}
-.activities-heading{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.8px;font-weight:650;color:#66785c;margin:0 0 12px}
-.activities-heading::after{content:"";height:1px;flex:1;background:#dfe5d9}
-.activity-card{padding:0;border:1px solid #e0e6da;border-radius:10px;background:#fffefb;transition:border-color .18s,box-shadow .18s}
+.project-activities{padding:16px 18px 18px;border:0;border-top:1px solid #e4e9df;background:#f0f4f8;flex:none}
+.activities-heading{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.8px;font-weight:650;color:#486581;margin:0 0 12px}
+.activities-heading::after{content:"";height:1px;flex:1;background:#d8e2ec}
+.activity-card{padding:0;border:1px solid #dbe4ed;border-radius:10px;background:#fffefb;transition:border-color .18s,box-shadow .18s}
 .activity-card+.activity-card{margin-top:8px}
 .activity-toggle{position:relative;padding:12px 38px 12px 14px;cursor:pointer;list-style:none;display:grid;gap:6px;min-height:76px;align-content:center}
 .activity-toggle::-webkit-details-marker{display:none}
-.activity-toggle>.publication-type{font-size:8px;color:#819174;letter-spacing:1px}
-.activity-toggle::after{content:"+";position:absolute;right:12px;top:50%;width:22px;height:22px;display:grid;place-items:center;transform:translateY(-50%);border-radius:50%;background:#edf2e6;color:#597146;font-size:16px;font-weight:400}
-.activity-card[open] .activity-toggle::after{content:"−";background:#426b4a;color:#fff}
+.activity-toggle>.publication-type{font-size:8px;color:#6c88a2;letter-spacing:1px}
+.activity-toggle::after{content:"+";position:absolute;right:12px;top:50%;width:22px;height:22px;display:grid;place-items:center;transform:translateY(-50%);border-radius:50%;background:#e8eff7;color:#466a8b;font-size:16px;font-weight:400}
+.activity-card[data-expanded="true"] .activity-toggle::after{content:"−";background:#466a8b;color:#fff}
 .activity-toggle:focus-visible{outline:2px solid #426b4a;outline-offset:2px;border-radius:10px}
-.activity-toggle .activity-title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:12px;font-weight:600;line-height:1.55;color:#34442f;overflow-wrap:anywhere}
-.activity-card[open]{border-color:#b4c4a7;box-shadow:0 5px 14px #34442d08}
-.activity-content{padding:0 14px 16px;border-top:1px solid #e8ece2}
+.activity-toggle .activity-title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:12px;font-weight:600;line-height:1.55;color:#304a60;overflow-wrap:anywhere}
+.activity-card[data-expanded="true"]{border-color:#9bb4cc;box-shadow:0 5px 14px #34442d08}
+.activity-content{padding:0 14px 16px;border-top:1px solid #e5ecf3}
 .activity-content .publication-meta{padding-top:14px;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .activity-full-title{font-size:14px;line-height:1.55;margin:0;color:#26372b}
 .activity-date{font-size:10px;color:#7b8672}
 .activity-summary{font-size:12px;color:#697365;line-height:1.75;margin:12px 0}
 .activity-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
 .activity-card .publication-authors{font-size:11px}
-.activity-links .publication-link{border-radius:6px;background:#f3f6ed;font-size:10px;padding:7px 10px}
-.activity-links .publication-link:hover{background:#426b4a;color:#fff;border-color:#426b4a}
+.activity-links .publication-link{border-radius:6px;background:#edf2f8;font-size:10px;padding:7px 10px}
+.activity-links .publication-link:hover{background:#466a8b;color:#fff;border-color:#466a8b}
 @media(max-width:700px){#project-grid .card-title{font-size:21px}#project-grid .card-description{font-size:13px}.activity-toggle .activity-title{font-size:13px}}
+
+.activity-panel{overflow:hidden}
+.activity-toggle::after{transition:background .2s ease,color .2s ease,transform .26s ease}
+.activity-card[data-expanded="true"] .activity-toggle::after{transform:translateY(-50%) rotate(180deg)}
+@media(prefers-reduced-motion:reduce){.activity-toggle::after{transition:none}}

@@ -80,12 +80,36 @@
     const card = node("details", "activity-card");
     const summary = node("summary", "activity-toggle");
     summary.append(node("span", "publication-type", entry.type), node("span", "activity-title", entry.title));
+    const panel = node("div", "activity-panel");
     const content = node("div", "activity-content");
-    card.append(summary, content);
+    panel.append(content);
+    card.append(summary, panel);
     let pinned = false;
     let hovering = false;
     let dismissed = false;
-    const update = () => { card.open = pinned || (hovering && !dismissed); };
+    let animation;
+    let expanded = false;
+    function update() {
+      const next = pinned || (hovering && !dismissed);
+      if (next === expanded) return;
+      expanded = next;
+      const from = card.open ? panel.getBoundingClientRect().height : 0;
+      if (animation) animation.cancel();
+      card.dataset.expanded = String(expanded);
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        card.open = expanded;
+        return;
+      }
+      card.open = true;
+      animation = panel.animate([
+        { height: `${from}px`, opacity: from ? 1 : 0 },
+        { height: expanded ? `${panel.scrollHeight}px` : "0px", opacity: expanded ? 1 : 0 }
+      ], { duration: 260, easing: "cubic-bezier(.22, 1, .36, 1)" });
+      animation.onfinish = () => {
+        card.open = expanded;
+        animation = null;
+      };
+    }
     card.addEventListener("pointerenter", event => {
       if (event.pointerType !== "mouse") return;
       hovering = true;
