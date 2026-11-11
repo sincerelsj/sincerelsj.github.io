@@ -327,7 +327,13 @@
     status.setAttribute("aria-atomic", "true");
     const cards = Array.from(grid.children);
     let current = 0;
+    const desktop = matchMedia("(min-width: 900px)");
     function go(index) {
+      if (desktop.matches) {
+        current = (index + cards.length) % cards.length;
+        update();
+        return;
+      }
       const target = Math.max(0, Math.min(cards.length - 1, index));
       grid.scrollTo({ left: cards[target].offsetLeft - cards[0].offsetLeft,
         behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
@@ -343,11 +349,16 @@
       return button;
     });
     function update() {
-      current = cards.reduce((nearest, card, index) =>
+      if (!desktop.matches) current = cards.reduce((nearest, card, index) =>
         Math.abs(card.offsetLeft - cards[0].offsetLeft - grid.scrollLeft) <
         Math.abs(cards[nearest].offsetLeft - cards[0].offsetLeft - grid.scrollLeft) ? index : nearest, 0);
-      previous.disabled = current === 0;
-      next.disabled = current === cards.length - 1;
+      previous.disabled = !desktop.matches && current === 0;
+      next.disabled = !desktop.matches && current === cards.length - 1;
+      cards.forEach((card, index) => {
+        const relative = (index - current + cards.length) % cards.length;
+        card.dataset.position = relative === 0 ? "center" : relative === 1 ? "right" : "left";
+        card.inert = desktop.matches && index !== current;
+      });
       buttons.forEach((button, index) => button.setAttribute("aria-pressed", String(index === current)));
       const label = `${String(current + 1).padStart(2, "0")} / ${String(cards.length).padStart(2, "0")}`;
       if (status.textContent !== label) status.textContent = label;
@@ -362,7 +373,22 @@
       }
     });
     grid.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    desktop.addEventListener("change", () => {
+      if (desktop.matches) { grid.scrollLeft = 0; update(); }
+      else {
+        cards.forEach(card => card.inert = false);
+        grid.scrollTo({left: cards[current].offsetLeft - cards[0].offsetLeft, behavior: "instant"});
+        update();
+      }
+    });
+    const sidePrevious = node("button", "carousel-side carousel-side-left");
+    const sideNext = node("button", "carousel-side carousel-side-right");
+    sidePrevious.type = sideNext.type = "button";
+    sidePrevious.setAttribute("aria-label", english ? "Select left project" : "왼쪽 프로젝트 선택");
+    sideNext.setAttribute("aria-label", english ? "Select right project" : "오른쪽 프로젝트 선택");
+    sidePrevious.addEventListener("click", () => go(current - 1));
+    sideNext.addEventListener("click", () => go(current + 1));
+    grid.append(sidePrevious, sideNext);
     controls.append(previous, choices, status, next);
     grid.before(controls);
     update();

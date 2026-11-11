@@ -351,3 +351,17 @@ html[lang="en"] .project-organization{font-size:12px}
 @media(min-width:900px){.project-carousel .project-sponsors{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}.project-carousel .sponsor-label{flex-basis:100%}.project-carousel .project-activities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.project-carousel .activities-heading{grid-column:1/-1}.project-carousel .activity-card{margin:0}}
 @media(max-width:600px){.project-carousel .thumbnail{aspect-ratio:16/10}.project-carousel .card-body{padding:20px 20px 0}.project-carousel .card-title{font-size:21px}.carousel-controls{gap:10px}.carousel-choice{padding:8px 12px}}
 @media(prefers-reduced-motion:reduce){#project-grid.project-carousel{scroll-behavior:auto}}
+
+/* Desktop: a focused card in front of two recessed neighbours. */
+.carousel-side{display:none}
+@media(min-width:900px){
+  #project-grid.project-carousel{display:grid;grid-template-columns:100%;gap:0;overflow:hidden;isolation:isolate;padding:20px 0 36px;scroll-snap-type:none}
+  #project-grid.project-carousel>.project-card{grid-area:1/1;width:70%;margin:0 auto;transform-origin:center top;transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .35s,filter .35s,box-shadow .35s;will-change:transform}
+  #project-grid.project-carousel>.project-card[data-position="center"]{z-index:3;transform:translateX(0) scale(1);opacity:1;box-shadow:0 14px 32px #253d5120}
+  #project-grid.project-carousel>.project-card[data-position="left"]{z-index:1;transform:translateX(-76%) translateY(40px) scale(.86);opacity:.48;filter:saturate(.55)}
+  #project-grid.project-carousel>.project-card[data-position="right"]{z-index:1;transform:translateX(76%) translateY(40px) scale(.86);opacity:.48;filter:saturate(.55)}
+  .carousel-side{display:block;position:absolute;top:60px;bottom:36px;width:15%;z-index:4;border:0;background:transparent;cursor:pointer;border-radius:18px}
+  .carousel-side-left{left:0}.carousel-side-right{right:0}
+  .carousel-side:focus-visible{outline:3px solid #466a8b;outline-offset:-5px}
+}
+@media(prefers-reduced-motion:reduce){#project-grid.project-carousel>.project-card{transition:none}}
