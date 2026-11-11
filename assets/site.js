@@ -307,6 +307,67 @@
     grid.append(renderProjectCard(project, index + 1));
   }
 
+  // Native horizontal scrolling also supports touch and trackpad gestures.
+  if (projects.length > 1) {
+    grid.classList.add("project-carousel");
+    grid.tabIndex = 0;
+    grid.setAttribute("aria-roledescription", "carousel");
+    const english = window.LOCALE.language === "en";
+    const controls = node("div", "carousel-controls");
+    const previous = node("button", "carousel-arrow", "←");
+    const next = node("button", "carousel-arrow", "→");
+    previous.type = next.type = "button";
+    previous.setAttribute("aria-label", english ? "Previous project" : "이전 프로젝트");
+    next.setAttribute("aria-label", english ? "Next project" : "다음 프로젝트");
+    previous.setAttribute("aria-controls", grid.id);
+    next.setAttribute("aria-controls", grid.id);
+    const choices = node("div", "carousel-choices");
+    const status = node("span", "carousel-status");
+    status.setAttribute("aria-live", "polite");
+    status.setAttribute("aria-atomic", "true");
+    const cards = Array.from(grid.children);
+    let current = 0;
+    function go(index) {
+      const target = Math.max(0, Math.min(cards.length - 1, index));
+      grid.scrollTo({ left: cards[target].offsetLeft - cards[0].offsetLeft,
+        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+    }
+    const buttons = projects.map((project, index) => {
+      const button = node("button", "carousel-choice", String(index + 1).padStart(2, "0"));
+      button.type = "button";
+      button.setAttribute("aria-label", project.title);
+      button.setAttribute("aria-controls", grid.id);
+      button.addEventListener("click", () => go(index));
+      choices.append(button);
+      cards[index].setAttribute("aria-label", `${index + 1} / ${cards.length}: ${project.title}`);
+      return button;
+    });
+    function update() {
+      current = cards.reduce((nearest, card, index) =>
+        Math.abs(card.offsetLeft - cards[0].offsetLeft - grid.scrollLeft) <
+        Math.abs(cards[nearest].offsetLeft - cards[0].offsetLeft - grid.scrollLeft) ? index : nearest, 0);
+      previous.disabled = current === 0;
+      next.disabled = current === cards.length - 1;
+      buttons.forEach((button, index) => button.setAttribute("aria-pressed", String(index === current)));
+      const label = `${String(current + 1).padStart(2, "0")} / ${String(cards.length).padStart(2, "0")}`;
+      if (status.textContent !== label) status.textContent = label;
+    }
+    previous.addEventListener("click", () => go(current - 1));
+    next.addEventListener("click", () => go(current + 1));
+    grid.addEventListener("keydown", event => {
+      if (event.target !== grid) return;
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        go(current + (event.key === "ArrowRight" ? 1 : -1));
+      }
+    });
+    grid.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    controls.append(previous, choices, status, next);
+    grid.before(controls);
+    update();
+  }
+
   const count = projects.filter(project => !project.placeholder).length;
   document.getElementById("project-count").textContent = String(count).padStart(2, "0");
 

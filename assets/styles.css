@@ -326,3 +326,28 @@ html[lang="en"] .project-organization{font-size:12px}
 .video-demo-link{display:flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;background:#466a8b;color:#fff;font-size:14px;font-weight:650;transition:background .2s ease}
 .video-demo-link:hover{background:#345571}
 .video-demo-link:focus-visible{outline:3px solid #fff;outline-offset:-6px}
+
+/* One research project per slide, with native touch scrolling. */
+#project-grid.project-carousel{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;align-items:flex-start;padding:2px 0 12px;position:relative}
+#project-grid.project-carousel::-webkit-scrollbar{display:none}
+#project-grid.project-carousel>.project-card{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;min-width:0}
+.project-carousel .thumbnail{aspect-ratio:16/7;max-height:360px}
+.project-carousel .card-body{padding:26px 30px 0}
+.project-carousel .card-title{font-size:25px}
+.project-carousel .card-description{font-size:14px;max-width:780px}
+.project-carousel .card-meta{font-size:11px}
+.project-carousel .card-subtitle{font-size:12px}
+.project-carousel .card-action{font-size:14px}
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 20px}
+.carousel-arrow,.carousel-choice{font:inherit;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.carousel-arrow{width:44px;height:44px;border:1px solid #cad6df;border-radius:50%;background:#fffefb;color:#466a8b;font-size:22px}
+.carousel-arrow:hover:not(:disabled){background:#466a8b;color:white}
+.carousel-arrow:disabled{opacity:.3;cursor:default}
+.carousel-choices{display:flex;gap:8px}
+.carousel-choice{border:1px solid transparent;border-radius:20px;background:#eaf0f4;color:#587086;padding:8px 14px;font-size:12px;font-weight:650}
+.carousel-choice[aria-pressed="true"]{background:#466a8b;color:white}
+.carousel-status{font-size:12px;color:#727e85;font-variant-numeric:tabular-nums}
+.carousel-controls button:focus-visible,.project-carousel:focus-visible{outline:3px solid #466a8b;outline-offset:3px}
+@media(min-width:900px){.project-carousel .project-sponsors{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}.project-carousel .sponsor-label{flex-basis:100%}.project-carousel .project-activities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.project-carousel .activities-heading{grid-column:1/-1}.project-carousel .activity-card{margin:0}}
+@media(max-width:600px){.project-carousel .thumbnail{aspect-ratio:16/10}.project-carousel .card-body{padding:20px 20px 0}.project-carousel .card-title{font-size:21px}.carousel-controls{gap:10px}.carousel-choice{padding:8px 12px}}
+@media(prefers-reduced-motion:reduce){#project-grid.project-carousel{scroll-behavior:auto}}
