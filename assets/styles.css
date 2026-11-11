@@ -321,3 +321,8 @@ html[lang="en"] .project-organization{font-size:12px}
 .activity-toggle::after{transition:background .2s ease,color .2s ease,transform .26s ease}
 .activity-card[data-expanded="true"] .activity-toggle::after{transform:translateY(-50%) rotate(180deg)}
 @media(prefers-reduced-motion:reduce){.activity-toggle::after{transition:none}}
+
+/* Direct demo access below the playable project video. */
+.video-demo-link{display:flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;background:#466a8b;color:#fff;font-size:14px;font-weight:650;transition:background .2s ease}
+.video-demo-link:hover{background:#345571}
+.video-demo-link:focus-visible{outline:3px solid #fff;outline-offset:-6px}

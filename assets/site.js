@@ -169,9 +169,9 @@
     const surface = node(clickable ? "a" : "div", "card-surface");
     if (clickable) {
       surface.href = url;
-      surface.target = "_blank";
+      surface.target = project.openInSameTab ? "_self" : "_blank";
       surface.rel = "noopener noreferrer";
-      surface.setAttribute("aria-label", `${project.title} — ${project.linkLabel || "프로젝트 보기"} ${t("(새 탭)")}`);
+      surface.setAttribute("aria-label", `${project.title} — ${project.linkLabel || "프로젝트 보기"}${project.openInSameTab ? "" : ` ${t("(새 탭)")}`}`);
     }
 
     const tone = tones.has(project.tone) ? project.tone : "sand";
@@ -188,6 +188,13 @@
       thumbnail.append(player);
       article.classList.add("has-video");
       article.append(thumbnail);
+      if (clickable) {
+        const demoLink = node("a", "video-demo-link", `${t(project.linkLabel || "프로젝트 보기")} →`);
+        demoLink.href = url;
+        demoLink.target = surface.target;
+        demoLink.rel = "noopener noreferrer";
+        article.append(demoLink);
+      }
     } else {
       const fallback = node("div", "thumbnail-placeholder");
       fallback.setAttribute("aria-hidden", "true");
@@ -258,7 +265,7 @@
 
     const footer = node("div", "card-footer");
     footer.append(node("span", "card-action", clickable ? (project.linkLabel || "프로젝트 보기") : available ? (project.status || "연구 참여") : "준비 중"));
-    const arrow = node("span", "card-arrow", clickable ? "↗" : "—");
+    const arrow = node("span", "card-arrow", clickable ? (project.openInSameTab ? "→" : "↗") : "—");
     arrow.setAttribute("aria-hidden", "true");
     footer.append(arrow);
     body.append(footer);
