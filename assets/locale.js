@@ -79,7 +79,6 @@
       history.replaceState(history.state, "", url.href + pendingPosition.hash);
       restoreReadingPosition();
       window.addEventListener("load", restoreReadingPosition, { once: true });
-      window.addEventListener("portfolio-news-ready", restoreReadingPosition, { once: true });
       for (const event of ["wheel", "touchstart", "pointerdown", "keydown"]) {
         window.addEventListener(event, finishPositionRestore, { once: true, passive: true });
       }
